@@ -206,7 +206,7 @@ Resources:
             Statement:
             - Effect: Allow
               Action: dynamodb:*
-              Resource: !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/watchlist"
+              Resource: !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/stockwatchlist"
                 
 #        - PolicyName: 'AccessWatchList'
 #          PolicyDocument:
@@ -364,23 +364,8 @@ Resources:
         - AttributeName: "Watchlists"
           KeyType: "RANGE"
       BillingMode: "PAY_PER_REQUEST"
-      TableName: "playlists"
+      TableName: "watchlist"
 
-#  AlbumTracksTable:
-#    Type: AWS::DynamoDB::Table
-#    Properties:
-#      AttributeDefinitions:
-#        - AttributeName: "asin"
-#          AttributeType: "S"
-#        - AttributeName: "track_number"
-#          AttributeType: "N"
-#      KeySchema:
-#        - AttributeName: "asin"
-#          KeyType: "HASH"
-#        - AttributeName: "track_number"
-#          KeyType: "RANGE"
-#      BillingMode: "PAY_PER_REQUEST"
-#      TableName: "album_tracks"
 #-----------------------------------------------------
 # The outputs defined below will be printed
 #  to the screen after a successful deploy
