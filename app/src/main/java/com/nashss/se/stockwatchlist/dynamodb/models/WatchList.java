@@ -1,4 +1,4 @@
-package com.nashss.se.stockwatchlist.lambda.dynamodb.models;
+package com.nashss.se.stockwatchlist.dynamodb.models;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.*;
 
