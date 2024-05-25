@@ -3,12 +3,12 @@ package com.nashss.se.stockwatchlist.models;
 import java.util.List;
 import java.util.Objects;
 
-public class watchListModel {
+public class WatchListModel {
     private final String email;
     private final String watchlistName;
     private final List<String> stockSymbols;
 
-    public watchListModel(String email, String watchlistName, List<String> stockSymbols) {
+    public WatchListModel(String email, String watchlistName, List<String> stockSymbols) {
         this.email = email;
         this.watchlistName = watchlistName;
         this.stockSymbols = stockSymbols;
@@ -29,8 +29,8 @@ public class watchListModel {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof watchListModel)) return false;
-        watchListModel that = (watchListModel) o;
+        if (!(o instanceof WatchListModel)) return false;
+        WatchListModel that = (WatchListModel) o;
         return Objects.equals(email, that.email) && Objects.equals(watchlistName, that.watchlistName) && Objects.equals(stockSymbols, that.stockSymbols);
     }
 
@@ -64,8 +64,8 @@ public class watchListModel {
             return this;
         }
 
-        public watchListModel build() {
-            return new watchListModel(email,watchlistName,stockSymbols);
+        public WatchListModel build() {
+            return new WatchListModel(email,watchlistName,stockSymbols);
         }
     }
 }

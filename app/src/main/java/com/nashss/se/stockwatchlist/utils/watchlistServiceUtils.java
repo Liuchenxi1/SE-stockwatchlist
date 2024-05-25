@@ -1,17 +1,13 @@
-package com.nashss.se.musicplaylistservice.utils;//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
+package com.nashss.se.stockwatchlist.utils;
 
 import java.util.regex.Pattern;
 import org.apache.commons.lang3.StringUtils;
 
-public final class TargetAndTrackerServiceUtils {
+public final class watchlistServiceUtils {
     private static final String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
     private static final Pattern INVALID_CHARACTER_PATTERN = Pattern.compile("[\"'\\\\]");
     private static final Pattern EMAIL_MUST_CONTAIN_PATTERN = Pattern.compile(EMAIL_REGEX);
-    private TargetAndTrackerServiceUtils() {
+    private watchlistServiceUtils() {
     }
 
     public static boolean isValidString(String stringToValidate) {

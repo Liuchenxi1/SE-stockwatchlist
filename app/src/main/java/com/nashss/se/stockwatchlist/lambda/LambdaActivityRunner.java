@@ -1,7 +1,7 @@
 package com.nashss.se.stockwatchlist.lambda;
 
-import com.nashss.se.musicplaylistservice.dependency.DaggerServiceComponent;
-import com.nashss.se.musicplaylistservice.dependency.ServiceComponent;
+import com.nashss.se.stockwatchlist.dependency.DaggerServiceComponent;
+import com.nashss.se.stockwatchlist.dependency.ServiceComponent;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
