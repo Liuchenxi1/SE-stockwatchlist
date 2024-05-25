@@ -2,15 +2,13 @@ package com.nashss.se.stockwatchlist.dynamodb.models;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.*;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @DynamoDBTable(tableName = "stockwatchlist")
 public class WatchList {
     private String userEmail;
     private String watchlistName;
-    private Set<String> stockSymbols;
+    private List<String> stockSymbols;
 
     @DynamoDBHashKey(attributeName = "UserEmail")
     public String getUserEmail() {
@@ -31,22 +29,20 @@ public class WatchList {
     }
 
     @DynamoDBAttribute(attributeName = "StockSymbols")
-    public Set<String> getStockSymbols() {
+    public List<String> getStockSymbols() {
         if(null == stockSymbols) {
             return null;
         }
 
-        return new HashSet<>(stockSymbols);
+        return new ArrayList<>(stockSymbols);
     }
 
-    public void setStockSymbols(Set<String> stockSymbols) {
+    public void setStockSymbols(List<String> stockSymbols) {
         if (null == stockSymbols) {
             this.stockSymbols = null;
         } else {
-            this.stockSymbols = new HashSet<>(stockSymbols);
+            this.stockSymbols = new ArrayList<>(stockSymbols);
         }
-
-        this.stockSymbols = stockSymbols;
     }
 
     @Override

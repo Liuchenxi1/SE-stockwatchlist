@@ -1,16 +1,15 @@
 package com.nashss.se.stockwatchlist.activity.results;
 
-import com.nashss.se.stockwatchlist.activity.requests.CreateWatchListRequest;
-import com.nashss.se.stockwatchlist.models.watchListModel;
+import com.nashss.se.stockwatchlist.models.WatchListModel;
 
 public class CreateWatchListResult {
-    private final watchListModel watchList;
+    private final WatchListModel watchList;
 
-    private CreateWatchListResult (watchListModel watchList) {
+    private CreateWatchListResult (WatchListModel watchList) {
         this.watchList = watchList;
     }
 
-    public watchListModel getWatchList() {
+    public WatchListModel getWatchList() {
         return watchList;
     }
 
@@ -26,9 +25,9 @@ public class CreateWatchListResult {
     }
 
     public static class Builder {
-        private watchListModel watchList;
+        private WatchListModel watchList;
 
-        public Builder withWatchListModel (watchListModel watchList) {
+        public Builder withWatchListModel (WatchListModel watchList) {
             this.watchList = watchList;
             return this;
         }
