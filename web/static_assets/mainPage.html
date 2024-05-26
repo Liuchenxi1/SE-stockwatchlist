@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Watchlist Web Application</title>
+    <script type="text/javascript" src="assets/mainPage.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>
+        body {
+            background-color: lightgrey; /* Set background color to light grey */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .header {
+            width: 100%;
+            background-color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .logoutButton {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+        }
+    </style>
+</head>
+
+<body>
+<header class="header" id="header">
+    <h1>Welcome to the Stock Watchlist Web Application</h1>
+</header>
+<div class="container">
+    <section id="home">
+        <h2>Manage Your Watchlists</h2>
+    </section>
+    <section id="manage-watchlist">
+        <h3>Watchlists</h3>
+        <div id="watchlist-management">
+            <input type="text" id="createWatchlistInput" placeholder="Watchlist Name">
+            <button id="createButton">Create</button>
+            <button id="clearButton">Clear</button>
+            <ul id="createWatchlistUl"></ul>
+        </div>
+    </section>
+</div>
+</body>
+</html>
+
+
+
