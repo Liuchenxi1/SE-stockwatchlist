@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Watchlist Web Application</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#stock-info">Stock Information</a></li>
+            <li><a href="#create-watchlist">Create Watchlist</a></li>
+            <li><a href="#manage-watchlist">Manage Watchlist</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id="home">
+        <h1>Welcome to the Stock Watchlist Web Application</h1>
+        <p>This application helps you manage your stock watchlists and get real-time stock information.</p>
+    </section>
+
+    <section id="stock-info">
+        <h2>Stock Information</h2>
+        <form id="stock-info-form">
+            <label for="stock-symbol">Enter Stock Symbol:</label>
+            <input type="text" id="stock-symbol" name="stock-symbol" required>
+            <button type="submit">Get Info</button>
+        </form>
+        <div id="stock-info-result">
+            <!-- Stock information will be displayed here -->
+        </div>
+    </section>
+
+    <section id="create-watchlist">
+        <h2>Create a Watchlist</h2>
+        <form id="create-watchlist-form">
+            <label for="watchlist-name">Watchlist Name:</label>
+            <input type="text" id="watchlist-name" name="watchlist-name" required>
+            <button type="submit">Create</button>
+        </form>
+        <div id="create-watchlist-result">
+            <!-- Confirmation of watchlist creation will be displayed here -->
+        </div>
+    </section>
+
+    <section id="manage-watchlist">
+        <h2>Manage Your Watchlists</h2>
+        <div id="watchlist-management">
+            <!-- List of watchlists and options to manage them will be displayed here -->
+        </div>
+    </section>
+</main>
+
+<script src="script.js"></script> <!-- Link to your JS file -->
+</body>
+</html>
+
+
