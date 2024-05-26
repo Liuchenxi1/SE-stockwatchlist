@@ -1,6 +1,7 @@
 package com.nashss.se.stockwatchlist.execptions;
 
-public class InvalidAttributeValueException extends RuntimeException{
+
+public class InvalidAttributeValueException extends InvalidAttributeException {
 
     private static final long serialVersionUID = 2415884883869772884L;
 
