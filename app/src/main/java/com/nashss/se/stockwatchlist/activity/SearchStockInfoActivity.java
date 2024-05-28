@@ -86,7 +86,8 @@ public class SearchStockInfoActivity {
                     .withStockInfo(stockInfo)
                     .build();
 
-        } catch (IOException e) {
+        } catch (IOException e) //why this part can't use StockInfoNotFound?
+        {
             logger.error("Error fetching stock information: ", e);
             return null;
         }

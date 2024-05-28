@@ -15,6 +15,16 @@ public class SearchStockInfoRequest {
     private final double[] highs;
     private final Integer[] volumes;
 
+    public SearchStockInfoRequest(String symbol, long[] timestamps, double[] opens, double[] closes, double[] lows, double[] highs, Integer[] volumes) {
+        this.symbol = symbol;
+        this.timestamps = timestamps;
+        this.opens = opens;
+        this.closes = closes;
+        this.lows = lows;
+        this.highs = highs;
+        this.volumes = volumes;
+    }
+
     private SearchStockInfoRequest(Builder builder) {
         this.symbol = builder.symbol;
         this.timestamps = builder.timestamps;
@@ -24,6 +34,7 @@ public class SearchStockInfoRequest {
         this.highs = builder.highs;
         this.volumes = builder.volumes;
     }
+
 
     public String getSymbol() {
         return symbol;
@@ -114,7 +125,7 @@ public class SearchStockInfoRequest {
         }
 
         public SearchStockInfoRequest build() {
-            return new SearchStockInfoRequest(this);
+            return new SearchStockInfoRequest(symbol,timestamps,opens,closes,lows,highs,volumes);
         }
     }
 }
