@@ -22,6 +22,7 @@ class Hub extends BindingClass {
         this.dataStore.set('compareJobTypes', compareJobTypes)
     }
 
+
     mount() {
 
         document.getElementById('submit').addEventListener('click', this.addMonthAndTarget);
