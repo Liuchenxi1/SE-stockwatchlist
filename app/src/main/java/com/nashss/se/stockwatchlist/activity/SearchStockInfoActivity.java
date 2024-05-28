@@ -18,13 +18,10 @@ import java.net.URL;
 
 public class SearchStockInfoActivity {
     private final Logger logger = LogManager.getLogger();
-    private final StockInfo stockInfo;
 
-    //No neeed WatchListDao;
-
+    //No need WatchListDao;
     @Inject
-    public SearchStockInfoActivity(StockInfo stockInfo) {
-        this.stockInfo = stockInfo;
+    public SearchStockInfoActivity() {
     }
 
     public SearchStockInfoResult fetchStockInfo (SearchStockInfoRequest request) {

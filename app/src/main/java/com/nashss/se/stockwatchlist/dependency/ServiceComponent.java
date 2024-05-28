@@ -14,9 +14,7 @@ public interface ServiceComponent {
 
     CreateWatchListActivity provideCreateWatchListActivity();
 
-//    SearchStockInfoActivity provideSearchStockInfoActivity();
-    //TODO this part is not working, why??
-
+     SearchStockInfoActivity provideSearchStockInfoActivity();
 
 
 }
