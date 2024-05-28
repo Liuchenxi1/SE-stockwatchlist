@@ -7,6 +7,7 @@ import java.util.Arrays;
 
 @JsonDeserialize(builder = SearchStockInfoRequest.Builder.class)
 public class SearchStockInfoRequest {
+    private final String symbol;
     private final long[] timestamps;
     private final double[] opens;
     private final double[] closes;
@@ -14,13 +15,29 @@ public class SearchStockInfoRequest {
     private final double[] highs;
     private final Integer[] volumes;
 
+    public SearchStockInfoRequest(String symbol, long[] timestamps, double[] opens, double[] closes, double[] lows, double[] highs, Integer[] volumes) {
+        this.symbol = symbol;
+        this.timestamps = timestamps;
+        this.opens = opens;
+        this.closes = closes;
+        this.lows = lows;
+        this.highs = highs;
+        this.volumes = volumes;
+    }
+
     private SearchStockInfoRequest(Builder builder) {
+        this.symbol = builder.symbol;
         this.timestamps = builder.timestamps;
         this.opens = builder.opens;
         this.closes = builder.closes;
         this.lows = builder.lows;
         this.highs = builder.highs;
         this.volumes = builder.volumes;
+    }
+
+
+    public String getSymbol() {
+        return symbol;
     }
 
     public long[] getTimestamps() {
@@ -50,7 +67,8 @@ public class SearchStockInfoRequest {
     @Override
     public String toString() {
         return "SearchStockInfoRequest{" +
-                "timestamps=" + Arrays.toString(timestamps) +
+                "symbol='" + symbol + '\'' +
+                ", timestamps=" + Arrays.toString(timestamps) +
                 ", opens=" + Arrays.toString(opens) +
                 ", closes=" + Arrays.toString(closes) +
                 ", lows=" + Arrays.toString(lows) +
@@ -62,14 +80,19 @@ public class SearchStockInfoRequest {
     public static Builder builder() { return new Builder(); }
 
     @JsonPOJOBuilder
-
     public static class Builder {
+        private String symbol;
         private long[] timestamps;
         private double[] opens;
         private double[] closes;
         private double[] lows;
         private double[] highs;
         private Integer[] volumes;
+
+        public Builder withSymbol(String symbol) {
+            this.symbol = symbol;
+            return this;
+        }
 
         public Builder withTimestamps(long[] timestamps) {
             this.timestamps = timestamps;
@@ -102,7 +125,7 @@ public class SearchStockInfoRequest {
         }
 
         public SearchStockInfoRequest build() {
-            return new SearchStockInfoRequest(this);
+            return new SearchStockInfoRequest(symbol,timestamps,opens,closes,lows,highs,volumes);
         }
     }
 }
