@@ -24,7 +24,7 @@ public class SearchStockInfoActivity {
     public SearchStockInfoActivity() {
     }
 
-    public SearchStockInfoResult fetchStockInfo (SearchStockInfoRequest request) {
+    public SearchStockInfoResult fetchStockInfo (SearchStockInfoRequest request) throws StockInfoNotFoundException {
         String url = "https://query1.finance.yahoo.com/v8/finance/chart/" + request.getSymbol() + "?interval=1d&range=365d";
 
         try {
@@ -86,7 +86,7 @@ public class SearchStockInfoActivity {
         } catch (IOException e) //why this part can't use StockInfoNotFound?
         {
             logger.error("Error fetching stock information: ", e);
-            return null;
+            throw new StockInfoNotFoundException("Stock is not found", e);
         }
     }
 }
