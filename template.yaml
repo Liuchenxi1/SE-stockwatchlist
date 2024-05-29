@@ -239,8 +239,6 @@ Resources:
           Properties:
             Path: /watchlists
             Method: post
-            Auth:
-              Authorizer: 'NONE'
 
   AddStockIntoWatchListLambda:
     Type: AWS::Serverless::Function
@@ -261,8 +259,7 @@ Resources:
           Properties:
             Path: /watchlists/{name}/{symbol}
             Method: put
-            Auth:
-              Authorizer: 'NONE'
+
 
   GetWatchListLambda:
     Type: AWS::Serverless::Function
@@ -283,8 +280,7 @@ Resources:
           Properties:
             Path: /watchlists/{name}
             Method: get
-            Auth:
-              Authorizer: 'NONE'
+
 
   RemoveWatchListLambda:
     Type: AWS::Serverless::Function
