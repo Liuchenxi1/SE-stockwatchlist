@@ -39,7 +39,7 @@ public class CreateWatchListActivity {
 
         newWatchList.setUserEmail(createWatchListRequest.getEmail());
         newWatchList.setWatchlistName(createWatchListRequest.getWatchlistName());
-        newWatchList.setStockSymbols(new ArrayList<>());
+        newWatchList.setStockSymbols(createWatchListRequest.getStockSymbols());
 
         WatchList result = watchListDao.saveWatchList(newWatchList);
 

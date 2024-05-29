@@ -18,7 +18,7 @@ public class ModelConverter {
      * @return the converted watchlist
      */
     public WatchListModel toWatchListModel(WatchList watchList) {
-        List<String> stockSymbols = null;
+        List<String> stockSymbols = new ArrayList<>();
         if (watchList.getStockSymbols() != null) {
             stockSymbols = new ArrayList<>(watchList.getStockSymbols());
         }
