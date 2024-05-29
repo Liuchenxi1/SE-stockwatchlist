@@ -27,28 +27,27 @@ public class CreateWatchListActivity {
     public CreateWatchListResult handleRequest(final CreateWatchListRequest createWatchListRequest) {
         logger.info("Received CreateWatchListRequest {}", createWatchListRequest);
 
-        if (!watchlistServiceUtils.isValidString(createWatchListRequest.getEmail())) {
-            throw new InvalidAttributeValueException("The email:" + createWatchListRequest.getEmail() + "contains illegal characters");
-        }
-
-        if (!watchlistServiceUtils.isValidString(createWatchListRequest.getWatchlistName())){
-            throw new InvalidAttributeValueException("The Watchlist:" + createWatchListRequest.getWatchlistName() + "contains illegal characters");
-        }
+//        if (!watchlistServiceUtils.isValidString(createWatchListRequest.getEmail())) {
+//            throw new InvalidAttributeValueException("The email:" + createWatchListRequest.getEmail() + "contains illegal characters");
+//        }
+//
+//        if (!watchlistServiceUtils.isValidString(createWatchListRequest.getWatchlistName())){
+//            throw new InvalidAttributeValueException("The Watchlist:" + createWatchListRequest.getWatchlistName() + "contains illegal characters");
+//        }
 
         WatchList newWatchList = new WatchList();
 
         newWatchList.setUserEmail(createWatchListRequest.getEmail());
         newWatchList.setWatchlistName(createWatchListRequest.getWatchlistName());
-        newWatchList.setStockSymbols(new ArrayList<>());
+        newWatchList.setStockSymbols(createWatchListRequest.getStockSymbols());
 
-        watchListDao.saveWatchList(newWatchList);
+        WatchList result = watchListDao.saveWatchList(newWatchList);
 
-        WatchListModel watchListModel = new ModelConverter().toWatchListModel(newWatchList);
+        WatchListModel watchListModel = new ModelConverter().toWatchListModel(result);
 
         return CreateWatchListResult.builder()
                 .withWatchListModel(watchListModel)
                 .build();
     }
-
 
 }
