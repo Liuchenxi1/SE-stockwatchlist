@@ -4,7 +4,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.*;
 
 import java.util.*;
 
-@DynamoDBTable(tableName = "stockwatchlist")
+@DynamoDBTable(tableName = "watchlist")
 public class WatchList {
     private String userEmail;
     private String watchlistName;
