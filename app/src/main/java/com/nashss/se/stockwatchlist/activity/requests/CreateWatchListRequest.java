@@ -10,13 +10,13 @@ import java.util.List;
 public class CreateWatchListRequest {
 
     private final String email;
-    private final String watchListName;
+    private final String watchlistName;
     private final List<String> stockSymbols;
 
 
-    public CreateWatchListRequest(String email, String watchListName, List<String> stockSymbols) {
+    public CreateWatchListRequest(String email, String watchlistName, List<String> stockSymbols) {
         this.email = email;
-        this.watchListName = watchListName;
+        this.watchlistName = watchlistName;
         this.stockSymbols = stockSymbols;
     }
 
@@ -24,8 +24,8 @@ public class CreateWatchListRequest {
         return email;
     }
 
-    public String getWatchListName() {
-        return watchListName;
+    public String getWatchlistName() {
+        return watchlistName;
     }
 
     public List<String> getStockSymbols() {
@@ -36,7 +36,7 @@ public class CreateWatchListRequest {
     public String toString() {
         return "CreateWatchListRequest{" +
                 "email='" + email + '\'' +
-                ", watchListName='" + watchListName + '\'' +
+                ", watchlistName='" + watchlistName + '\'' +
                 ", stockSymbols=" + stockSymbols +
                 '}';
     }
@@ -46,10 +46,9 @@ public class CreateWatchListRequest {
     }
 
     @JsonPOJOBuilder
-
     public static class Builder {
         private String email;
-        private String watchListName;
+        private String watchlistName;
         private List<String> stockSymbols;
 
         public Builder withEmail (String email) {
@@ -57,8 +56,8 @@ public class CreateWatchListRequest {
             return this;
         }
 
-        public Builder withWatchListName (String watchListName) {
-            this.watchListName = watchListName;
+        public Builder withWatchlistName (String watchlistName) {
+            this.watchlistName = watchlistName;
             return this;
         }
 
@@ -68,7 +67,7 @@ public class CreateWatchListRequest {
         }
 
         public CreateWatchListRequest build() {
-            return new CreateWatchListRequest(email,watchListName,stockSymbols);
+            return new CreateWatchListRequest(email,watchlistName,stockSymbols);
         }
 
     }

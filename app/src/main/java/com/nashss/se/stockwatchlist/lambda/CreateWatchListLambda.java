@@ -6,8 +6,6 @@ import com.nashss.se.stockwatchlist.activity.results.CreateWatchListResult;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 
-import javax.management.InvalidAttributeValueException;
-
 public class CreateWatchListLambda
         extends LambdaActivityRunner<CreateWatchListRequest, CreateWatchListResult>
         implements RequestHandler<AuthenticatedLambdaRequest<CreateWatchListRequest>, LambdaResponse> {
@@ -19,7 +17,7 @@ public class CreateWatchListLambda
             return input.fromUserClaims(claims ->
                     CreateWatchListRequest.builder()
                             .withEmail(claims.get("email"))
-                            .withWatchListName(unauthenticatedRequest.getWatchListName())
+                            .withWatchlistName(unauthenticatedRequest.getWatchlistName())
                             .withStockSymbols(unauthenticatedRequest.getStockSymbols())
                             .build());
         },
