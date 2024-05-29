@@ -237,7 +237,7 @@ Resources:
         MusicPlaylistService:
           Type: Api
           Properties:
-            Path: /watchlists/{name}
+            Path: /watchlists
             Method: post
             Auth:
               Authorizer: 'NONE'
