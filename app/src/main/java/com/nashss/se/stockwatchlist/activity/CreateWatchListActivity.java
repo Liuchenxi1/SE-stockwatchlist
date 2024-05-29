@@ -31,14 +31,14 @@ public class CreateWatchListActivity {
             throw new InvalidAttributeValueException("The email:" + createWatchListRequest.getEmail() + "contains illegal characters");
         }
 
-        if (!watchlistServiceUtils.isValidString(createWatchListRequest.getWatchListName())){
-            throw new InvalidAttributeValueException("The Watchlist:" + createWatchListRequest.getWatchListName() + "contains illegal characters");
+        if (!watchlistServiceUtils.isValidString(createWatchListRequest.getWatchlistName())){
+            throw new InvalidAttributeValueException("The Watchlist:" + createWatchListRequest.getWatchlistName() + "contains illegal characters");
         }
 
         WatchList newWatchList = new WatchList();
 
         newWatchList.setUserEmail(createWatchListRequest.getEmail());
-        newWatchList.setWatchlistName(createWatchListRequest.getWatchListName());
+        newWatchList.setWatchlistName(createWatchListRequest.getWatchlistName());
         newWatchList.setStockSymbols(new ArrayList<>());
 
         watchListDao.saveWatchList(newWatchList);
