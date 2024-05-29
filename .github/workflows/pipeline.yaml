@@ -11,8 +11,8 @@ env:
   # STUDENTS: Set these environment variables 
   API_BASE_URL:  https://9i76ngkz14.execute-api.us-east-2.amazonaws.com/Prod/
   COGNITO_DOMAIN:  stockwatchlist-liu-chenxi
-  COGNITO_REDIRECT_SIGNIN: TODO-REPLACE
-  COGNITO_REDIRECT_SIGNOUT: TODO-REPLACE
+  COGNITO_REDIRECT_SIGNIN: https://drtqzk5w1j9de.cloudfront.net
+  COGNITO_REDIRECT_SIGNOUT: https://drtqzk5w1j9de.cloudfront.net
 
   COGNITO_USER_POOL_ID: ${{ secrets.COGNITO_USER_POOL_ID }}
   COGNITO_USER_POOL_CLIENT_ID: ${{ secrets.COGNITO_USER_POOL_CLIENT_ID }}
