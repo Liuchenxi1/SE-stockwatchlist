@@ -27,13 +27,13 @@ public class CreateWatchListActivity {
     public CreateWatchListResult handleRequest(final CreateWatchListRequest createWatchListRequest) {
         logger.info("Received CreateWatchListRequest {}", createWatchListRequest);
 
-//        if (!watchlistServiceUtils.isValidString(createWatchListRequest.getEmail())) {
-//            throw new InvalidAttributeValueException("The email:" + createWatchListRequest.getEmail() + "contains illegal characters");
-//        }
-//
-//        if (!watchlistServiceUtils.isValidString(createWatchListRequest.getWatchlistName())){
-//            throw new InvalidAttributeValueException("The Watchlist:" + createWatchListRequest.getWatchlistName() + "contains illegal characters");
-//        }
+        if (!watchlistServiceUtils.isValidString(createWatchListRequest.getEmail())) {
+            throw new InvalidAttributeValueException("The email:" + createWatchListRequest.getEmail() + "contains illegal characters");
+        }
+
+        if (!watchlistServiceUtils.isValidString(createWatchListRequest.getWatchlistName())){
+            throw new InvalidAttributeValueException("The Watchlist:" + createWatchListRequest.getWatchlistName() + "contains illegal characters");
+        }
 
         WatchList newWatchList = new WatchList();
 

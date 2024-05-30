@@ -18,15 +18,15 @@ public class ModelConverter {
      * @return the converted watchlist
      */
     public WatchListModel toWatchListModel(WatchList watchList) {
-        List<String> stockSymbols = new ArrayList<>();
-        if (watchList.getStockSymbols() != null) {
-            stockSymbols = new ArrayList<>(watchList.getStockSymbols());
-        }
+//        List<String> stockSymbols = new ArrayList<>();
+//        if (watchList.getStockSymbols() != null) {
+//            stockSymbols = new ArrayList<>(watchList.getStockSymbols());
+//        }
 
         return WatchListModel.builder()
                 .withEmail(watchList.getUserEmail())
                 .withWatchlistName(watchList.getWatchlistName())
-                .withStockSymbols(stockSymbols)
+                .withStockSymbols(watchList.getStockSymbols())
                 .build();
     }
 
