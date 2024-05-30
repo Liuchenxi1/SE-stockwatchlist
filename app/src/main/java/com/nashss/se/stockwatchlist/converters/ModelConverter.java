@@ -22,7 +22,6 @@ public class ModelConverter {
 //        if (watchList.getStockSymbols() != null) {
 //            stockSymbols = new ArrayList<>(watchList.getStockSymbols());
 //        }
-
         return WatchListModel.builder()
                 .withEmail(watchList.getUserEmail())
                 .withWatchlistName(watchList.getWatchlistName())
