@@ -3,8 +3,6 @@ package com.nashss.se.stockwatchlist.activity.requests;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-import java.util.List;
-
 @JsonDeserialize(builder = DeleteWatchListRequest.class)
 public class DeleteWatchListRequest {
 
