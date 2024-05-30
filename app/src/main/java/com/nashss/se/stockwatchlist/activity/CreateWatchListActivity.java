@@ -39,16 +39,15 @@ public class CreateWatchListActivity {
 
         newWatchList.setUserEmail(createWatchListRequest.getEmail());
         newWatchList.setWatchlistName(createWatchListRequest.getWatchlistName());
-        newWatchList.setStockSymbols(new ArrayList<>());
+        newWatchList.setStockSymbols(createWatchListRequest.getStockSymbols());
 
-        watchListDao.saveWatchList(newWatchList);
+        WatchList result = watchListDao.saveWatchList(newWatchList);
 
-        WatchListModel watchListModel = new ModelConverter().toWatchListModel(newWatchList);
+        WatchListModel watchListModel = new ModelConverter().toWatchListModel(result);
 
         return CreateWatchListResult.builder()
                 .withWatchListModel(watchListModel)
                 .build();
     }
-
 
 }

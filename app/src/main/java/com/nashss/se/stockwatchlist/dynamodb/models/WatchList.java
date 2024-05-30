@@ -4,7 +4,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.*;
 
 import java.util.*;
 
-@DynamoDBTable(tableName = "watchlist")
+@DynamoDBTable(tableName = "watchlists")
 public class WatchList {
     private String userEmail;
     private String watchlistName;
@@ -19,7 +19,7 @@ public class WatchList {
         this.userEmail = userEmail;
     }
 
-    @DynamoDBRangeKey(attributeName = "WatchlistName")
+    @DynamoDBRangeKey(attributeName = "Watchlists")
     public String getWatchlistName() {
         return watchlistName;
     }

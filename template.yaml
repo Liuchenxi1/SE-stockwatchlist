@@ -206,15 +206,8 @@ Resources:
             Statement:
             - Effect: Allow
               Action: dynamodb:*
-              Resource: !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/stockwatchlist"
-                
-#        - PolicyName: 'AccessWatchList'
-#          PolicyDocument:
-#            Version: '2012-10-17'
-#            Statement:
-#            - Effect: Allow
-#              Action: dynamodb:*
-#              Resource: !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/watchlist"
+              Resource: !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/watchlists"
+
 
   #-----------------------------------------------------
   # Lambda Functions Configuration
@@ -360,7 +353,7 @@ Resources:
         - AttributeName: "Watchlists"
           KeyType: "RANGE"
       BillingMode: "PAY_PER_REQUEST"
-      TableName: "watchlist"
+      TableName: "watchlists"
 
 #-----------------------------------------------------
 # The outputs defined below will be printed

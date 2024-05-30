@@ -1,55 +1,71 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stock Watchlist Web Application</title>
-    <script type="text/javascript" src="assets/mainPage.js"></script>
+    <script type="text/javascript" src="assets/index.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Times+New+Roman:wght@400;700&display=swap');
+
         body {
-            background-color: lightgrey; /* Set background color to light grey */
+            font-family: 'Times New Roman', serif;
+            background-color: #f0f0f0;
+            color: #333;
+            text-align: center;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-
         .container {
+            padding: 20px;
             text-align: center;
-            margin-top: 50px;
         }
-
-        .header {
-            width: 100%;
-            background-color: white;
-            text-align: center;
-            padding: 20px 0;
+        .quote {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px auto;
+            color: #4A4A4A;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
         }
-
-        .logoutButton {
-            position: absolute;
-            top: 30px;
-            left: 30px;
+        .author {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #333;
+        }
+        .image-container {
+            margin: 20px 0;
+        }
+        .image-container img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
-
 <body>
 <header class="header" id="header">
-    <h1>Welcome to the Stock Watchlist Web Application</h1>
 </header>
 <div class="container">
-    <section id="home">
-        <h2>Manage Your Watchlists</h2>
-    </section>
-    <section id="manage-watchlist">
-        <h3>Watchlists</h3>
-        <div id="watchlist-management">
-            <input type="text" id="createWatchlistInput" placeholder="Watchlist Name">
-            <button id="createButton">Create</button>
-            <button id="clearButton">Clear</button>
-            <ul id="createWatchlistUl"></ul>
-        </div>
-    </section>
+    <div class="image-container">
+        <img src="https://cdn.britannica.com/04/3804-050-EB9DD403/Theodore-Roosevelt.jpg">
+    </div>
+    <div class="quote">
+        “The Credit Belongs To The Man Who Is Actually In The Arena, Whose Face Is Marred By Dust And Sweat And Blood;
+        Who Strives Valiantly; Who Errs, Who Comes Short Again And Again, Because There Is No Effort Without Error And Shortcoming;
+        But Who Does Actually Strive To Do The Deeds;"
+    </div>
+    <div class ="author">
+        Roosevelt's "The Man in the Arena"
+    </div>
 </div>
 </body>
 </html>
