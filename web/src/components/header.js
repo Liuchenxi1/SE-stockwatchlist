@@ -36,7 +36,7 @@ export default class Header extends BindingClass {
         homeButton.classList.add('header_home');
         homeButton.href = 'index.html';
 
-        homeButton.innerText = 'Finanical Targeter and Tracker';
+        homeButton.innerText = 'Stock Watchlist Application';
 
         const siteTitle = document.createElement('div');
         siteTitle.classList.add('site-title');
