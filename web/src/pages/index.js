@@ -12,10 +12,8 @@ class Index extends BindingClass {
     }
 
     mount() {
-        // Optionally, add the header to the page
         this.header.addHeaderToPage();
-    }
-
+        }
 }
 
 /**
