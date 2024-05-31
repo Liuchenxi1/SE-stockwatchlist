@@ -14,7 +14,7 @@ public interface ServiceComponent {
 
     CreateWatchListActivity provideCreateWatchListActivity();
 
-     SearchStockInfoActivity provideSearchStockInfoActivity();
+    SearchStockInfoActivity provideSearchStockInfoActivity();
 
 
 }
