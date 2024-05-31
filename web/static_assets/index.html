@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +9,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Times+New+Roman:wght@400;700&display=swap');
 
-        body {
+ body {
             font-family: 'Times New Roman', serif;
             background-color: #f0f0f0;
             color: #333;
@@ -18,14 +17,58 @@
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .header {
+            width: 100%;
+            display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
         }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 60%;
+        }
+
+        .site-title {
+            flex: 1;
+            text-align: left;
+        }
+
+        .site-title a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .user .button {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            background-color: #ff9900;
+            border-radius: 4px;
+        }
+
         .container {
             padding: 20px;
             text-align: center;
+            margin-top: 70px; /* Adjusting margin-top to account for fixed header and some extra space */
         }
+
         .quote {
             font-size: 24px;
             font-weight: bold;
@@ -34,17 +77,20 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
             max-width: 600px;
         }
+
         .author {
             font-size: 18px;
             margin-top: 10px;
             color: #333;
         }
+
         .image-container {
             margin: 20px 0;
         }
+
         .image-container img {
-            width: 80px;
-            height: 80px;
+            width: 655px;
+            height: 520px;
             object-fit: cover;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -55,17 +101,19 @@
 <header class="header" id="header">
 </header>
 <div class="container">
+<!--    <div class="image-container">-->
+<!--        <img src="https://cdn.britannica.com/04/3804-050-EB9DD403/Theodore-Roosevelt.jpg">-->
+<!--    </div>-->
     <div class="image-container">
-        <img src="https://cdn.britannica.com/04/3804-050-EB9DD403/Theodore-Roosevelt.jpg">
+        <img src="https://i.etsystatic.com/40002423/r/il/ee9288/4502509620/il_680x540.4502509620_5206.jpg">
     </div>
-    <div class="quote">
-        “The Credit Belongs To The Man Who Is Actually In The Arena, Whose Face Is Marred By Dust And Sweat And Blood;
-        Who Strives Valiantly; Who Errs, Who Comes Short Again And Again, Because There Is No Effort Without Error And Shortcoming;
-        But Who Does Actually Strive To Do The Deeds;"
-    </div>
-    <div class ="author">
-        Roosevelt's "The Man in the Arena"
-    </div>
+<!--    <div class="quote">-->
+<!--        I want you to deal with your problems by becoming Rich!!!-->
+<!--    </div>-->
+<!--    <div class ="author">-->
+<!--        Roosevelt's "The Man in the Arena"-->
+<!--    </div>-->
 </div>
 </body>
 </html>
+
