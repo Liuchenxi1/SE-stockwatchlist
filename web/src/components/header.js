@@ -21,14 +21,18 @@ export default class Header extends BindingClass {
      * Add the header to the page.
      */
     async addHeaderToPage() {
-        const currentUser = await this.client.getIdentity();
+         const currentUser = await this.client.getIdentity();
 
-        const siteTitle = this.createSiteTitle();
-        const userInfo = this.createUserInfoForHeader(currentUser);
+         const siteTitle = this.createSiteTitle();
+         const userInfo = this.createUserInfoForHeader(currentUser);
 
-        const header = document.getElementById('header');
-        header.appendChild(siteTitle);
-        header.appendChild(userInfo);
+         const headerContent = document.createElement('div');
+         headerContent.classList.add('header-content');
+
+         headerContent.appendChild(siteTitle);
+         headerContent.appendChild(userInfo);
+         const header = document.getElementById('header');
+         header.appendChild(headerContent);
     }
 
     createSiteTitle() {
