@@ -275,12 +275,12 @@ Resources:
             Method: get
 
 
-  RemoveWatchListLambda:
+  DeleteWatchListLambda:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: com.nashss.se.stockwatchlist.lambda.RemoveWatchListLambda::handleRequest
+      Handler: com.nashss.se.stockwatchlist.lambda.DeleteWatchListLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
