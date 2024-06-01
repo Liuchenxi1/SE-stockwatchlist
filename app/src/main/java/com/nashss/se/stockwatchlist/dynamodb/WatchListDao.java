@@ -37,6 +37,26 @@ public class WatchListDao {
         return watchList;
     }
 
+    public WatchList getWatchlist(String watchListName) {
+
+        WatchList watchList = this.dynamoDBMapper.load(WatchList.class, watchListName);
+
+        if (watchList == null) {
+            metricsPublisher.addCount(MetricsConstants.GETWATCHLIST_WATCHLISTNOTFOUND_COUNT,1);
+            throw new WatchlistIsNotFoundException("the watchlist Name can not be found" + watchListName);
+        }
+        metricsPublisher.addCount(MetricsConstants.GETWATCHLIST_WATCHLISTNOTFOUND_COUNT, 0);
+        return watchList;
+    }
+
+    public WatchList deleteWatchList(WatchList watchList) {
+        this.dynamoDBMapper.delete(watchList);
+        return watchList;
+    }
+
+
+
+
     //TODO need more functions
 
 }

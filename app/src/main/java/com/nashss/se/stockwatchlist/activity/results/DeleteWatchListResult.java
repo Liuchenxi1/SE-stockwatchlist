@@ -22,14 +22,14 @@ public class DeleteWatchListResult {
                 '}';
     }
 
-    public static WatchListModel.Builder builder() {
-        return new WatchListModel.Builder();
+    public static Builder builder() {
+        return new Builder();
     }
 
     public static class Builder {
         private WatchListModel watchList;
 
-        public Builder withWatchList (WatchListModel watchList) {
+        public Builder witWatchListDelete (WatchListModel watchList) {
             this.watchList = watchList;
             return  this;
         }

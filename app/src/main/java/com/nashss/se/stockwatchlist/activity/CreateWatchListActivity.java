@@ -13,7 +13,6 @@ import javax.inject.Inject;
 
 import org.apache.logging.log4j.*;
 
-import java.util.ArrayList;
 
 public class CreateWatchListActivity {
     private final Logger logger = LogManager.getLogger();

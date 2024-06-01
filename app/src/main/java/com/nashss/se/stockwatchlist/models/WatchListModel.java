@@ -67,5 +67,6 @@ public class WatchListModel {
         public WatchListModel build() {
             return new WatchListModel(email,watchlistName,stockSymbols);
         }
+
     }
 }
