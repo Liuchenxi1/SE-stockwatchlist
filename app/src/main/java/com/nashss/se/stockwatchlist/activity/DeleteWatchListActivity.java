@@ -3,10 +3,12 @@ package com.nashss.se.stockwatchlist.activity;
 
 import com.nashss.se.stockwatchlist.activity.requests.DeleteWatchListRequest;
 import com.nashss.se.stockwatchlist.activity.results.DeleteWatchListResult;
+import com.nashss.se.stockwatchlist.converters.ModelConverter;
 import com.nashss.se.stockwatchlist.dynamodb.WatchListDao;
 import com.nashss.se.stockwatchlist.dynamodb.models.WatchList;
 import com.nashss.se.stockwatchlist.metrics.MetricsConstants;
 import com.nashss.se.stockwatchlist.metrics.MetricsPublisher;
+import com.nashss.se.stockwatchlist.models.WatchListModel;
 import com.nashss.se.stockwatchlist.utils.watchlistServiceUtils;
 import com.nashss.se.stockwatchlist.execptions.InvalidAttributeValueException;
 import org.apache.logging.log4j.LogManager;
@@ -19,7 +21,6 @@ public class DeleteWatchListActivity {
 
     private final Logger log = LogManager.getLogger();
     private final WatchListDao watchListDao;
-
     private final MetricsPublisher metricsPublisher;
 
     @Inject
@@ -44,18 +45,21 @@ public class DeleteWatchListActivity {
             throw new SecurityException("You don't have a watch list to delete");
         }
 
-        watchList.setWatchlistName(deleteWatchListRequest.getWatchlistName());
-        watchList = watchListDao.saveWatchList(watchList);
+        WatchList result = watchListDao.deleteWatchList(watchList);
 
+        WatchListModel watchListToDelete = new ModelConverter().deleteWatchlistModel(result);
+        //I think ModelCoverter.java is correct!!!
 
-
+        return DeleteWatchListResult.builder()
+                .witWatchListDelete(watchListToDelete)
+                .build();
     }
 
     private void publishExceptionMetrics(final boolean isInvalidAttributeValue,
                                          final boolean isInvalidAttributeChange) {
-        metricsPublisher.addCount(MetricsConstants.UPDATEPLAYLIST_INVALIDATTRIBUTEVALUE_COUNT,
+        metricsPublisher.addCount(MetricsConstants.UPDATEWATCHLIST_INVALIDATTRIBUTEVALUE_COUNT,
                 isInvalidAttributeValue ? 1 : 0);
-        metricsPublisher.addCount(MetricsConstants.UPDATEPLAYLIST_INVALIDATTRIBUTECHANGE_COUNT,
+        metricsPublisher.addCount(MetricsConstants.UPDATEWATCHLIST_INVALIDATTRIBUTECHANGE_COUNT,
                 isInvalidAttributeChange ? 1 : 0);
     }
 
