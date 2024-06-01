@@ -20,7 +20,7 @@ public class DeleteWatchListLambda
                     log.info("Deleting watchlist: {}", unauthenticatedRequest.getWatchlistName());
                     return input.fromUserClaims(claims ->
                             DeleteWatchListRequest.builder()
-                                    .withEmail(claims.get("email"))
+//                                    .withEmail(claims.get("email"))
                                     .withWatchlistName(unauthenticatedRequest.getWatchlistName())
                                     .build());
                 },
