@@ -48,7 +48,6 @@ public class DeleteWatchListActivity {
         WatchList result = watchListDao.deleteWatchList(watchList);
 
         WatchListModel watchListToDelete = new ModelConverter().deleteWatchlistModel(result);
-        //I think ModelCoverter.java is correct!!!
 
         return DeleteWatchListResult.builder()
                 .witWatchListDelete(watchListToDelete)
