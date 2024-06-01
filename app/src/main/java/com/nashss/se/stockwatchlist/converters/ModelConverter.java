@@ -29,12 +29,14 @@ public class ModelConverter {
                 .build();
     }
 
-    public WatchListModel deleteWatchlistModel(WatchList watchList) {
-        return WatchListModel.builder()
-                .withEmail(watchList.getUserEmail())
-                .withWatchlistName(watchList.getWatchlistName())
-                .build();
-    }
+    //TODO
+
+//    public WatchListModel deleteWatchlistModel(WatchList watchList) {
+//        return WatchListModel.builder()
+//                .withEmail(watchList.getUserEmail())
+//                .withWatchlistName(watchList.getWatchlistName())
+//                .build();
+//    }
 
     //TODO need more!!
 

@@ -47,7 +47,7 @@ public class DeleteWatchListActivity {
 
         WatchList result = watchListDao.deleteWatchList(watchList);
 
-        WatchListModel watchListToDelete = new ModelConverter().deleteWatchlistModel(result);
+        WatchListModel watchListToDelete = new ModelConverter().toWatchListModel(result);
 
         return DeleteWatchListResult.builder()
                 .witWatchListDelete(watchListToDelete)
@@ -61,5 +61,4 @@ public class DeleteWatchListActivity {
         metricsPublisher.addCount(MetricsConstants.UPDATEWATCHLIST_INVALIDATTRIBUTECHANGE_COUNT,
                 isInvalidAttributeChange ? 1 : 0);
     }
-
 }
