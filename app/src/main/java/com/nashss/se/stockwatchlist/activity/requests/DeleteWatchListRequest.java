@@ -3,7 +3,7 @@ package com.nashss.se.stockwatchlist.activity.requests;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonDeserialize(builder = DeleteWatchListRequest.class)
+@JsonDeserialize(builder = DeleteWatchListRequest.Builder.class)
 public class DeleteWatchListRequest {
 
     private final String email;
@@ -39,13 +39,13 @@ public class DeleteWatchListRequest {
         private String email;
         private String watchlistName;
 
-        public Builder withWatchlistName (String watchlistName) {
-            this.watchlistName = watchlistName;
+        public Builder withEmail(String email) {
+            this.email = email;
             return this;
         }
 
-        public Builder withEmail(String email) {
-            this.email = email;
+        public Builder withWatchlistName (String watchlistName) {
+            this.watchlistName = watchlistName;
             return this;
         }
 
