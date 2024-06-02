@@ -5,7 +5,7 @@ import DataStore from "../util/DataStore";
 class MainPage extends BindingClass {
     constructor() {
         super();
-        this.bindClassMethods(['mount', 'createWatchlist', 'clearWatchlist'], this);
+        this.bindClassMethods(['mount', 'createWatchlist', 'clearWatchlist', 'deleteWatchlist'], this);
 
         this.dataStore = new DataStore();
         this.header = new Header(this.dataStore);
@@ -14,6 +14,7 @@ class MainPage extends BindingClass {
     mount() {
         document.getElementById('createButton').addEventListener('click', this.createWatchlist);
         document.getElementById('clearButton').addEventListener('click', this.clearWatchlist);
+        document.getElementById('deleteButton').addEventListener('click', this.deleteWatchlist);
 
         // Optionally, add the header to the page
         this.header.addHeaderToPage();
@@ -41,6 +42,14 @@ class MainPage extends BindingClass {
         evt.preventDefault();
         document.getElementById("createWatchlistInput").value = "";
     }
+
+    deleteWatchlist(evt) {
+        evt.preventDefault();
+        const watchlistUl = document.getElementById("createWatchlistUl");
+        while (watchlistUl.firstChild) {
+            watchlistUl.removeChild(watchlistUl.firstChild);
+        }
+    }
 }
 
 /**
@@ -52,4 +61,5 @@ const main = async () => {
 };
 
 window.addEventListener('DOMContentLoaded', main);
+
 
