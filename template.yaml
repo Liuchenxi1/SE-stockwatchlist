@@ -292,7 +292,7 @@ Resources:
         MusicPlaylistService:
           Type: Api
           Properties:
-            Path: /watchlists/{name}
+            Path: /watchlists
             Method: delete
 
   RemoveStockFromWatchListLambda:
