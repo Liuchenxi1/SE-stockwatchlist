@@ -16,10 +16,9 @@ public class DeleteWatchListLambda
     @Override
     public LambdaResponse handleRequest(AuthenticatedLambdaRequest<DeleteWatchListRequest> input, Context context) {
         return super.runActivity(() -> {
-                    DeleteWatchListRequest unauthenticatedRequest = input.fromPath(path -> DeleteWatchListRequest.builder().withWatchlistName(path.get("Watchlists")).build());
+                    DeleteWatchListRequest unauthenticatedRequest = input.fromBody(DeleteWatchListRequest.class);
 
                     log.info("Deleting watchlist: {}", unauthenticatedRequest.getWatchlistName());
-
 
                     return input.fromUserClaims(claims ->
                             DeleteWatchListRequest.builder()

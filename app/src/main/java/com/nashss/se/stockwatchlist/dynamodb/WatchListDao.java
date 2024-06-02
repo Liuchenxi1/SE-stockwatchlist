@@ -1,12 +1,15 @@
 package com.nashss.se.stockwatchlist.dynamodb;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+
 import com.nashss.se.stockwatchlist.dynamodb.models.WatchList;
 import com.nashss.se.stockwatchlist.execptions.WatchlistIsNotFoundException;
 import com.nashss.se.stockwatchlist.metrics.MetricsConstants;
 import com.nashss.se.stockwatchlist.metrics.MetricsPublisher;
 
 import javax.inject.Inject;
+import java.util.HashMap;
+import java.util.Map;
 
 public class WatchListDao {
 
@@ -53,10 +56,6 @@ public class WatchListDao {
         this.dynamoDBMapper.delete(watchList);
         return watchList;
     }
-
-
-
-
 
 
     //TODO need more functions

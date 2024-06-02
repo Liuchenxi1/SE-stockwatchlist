@@ -1,20 +1,22 @@
 package com.nashss.se.stockwatchlist.activity;
 
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import com.nashss.se.stockwatchlist.activity.requests.DeleteWatchListRequest;
 import com.nashss.se.stockwatchlist.activity.results.DeleteWatchListResult;
+
 import com.nashss.se.stockwatchlist.converters.ModelConverter;
 import com.nashss.se.stockwatchlist.dynamodb.WatchListDao;
 import com.nashss.se.stockwatchlist.dynamodb.models.WatchList;
 import com.nashss.se.stockwatchlist.metrics.MetricsConstants;
 import com.nashss.se.stockwatchlist.metrics.MetricsPublisher;
 import com.nashss.se.stockwatchlist.models.WatchListModel;
-import com.nashss.se.stockwatchlist.utils.watchlistServiceUtils;
-import com.nashss.se.stockwatchlist.execptions.InvalidAttributeValueException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
+
+import static com.nashss.se.stockwatchlist.utils.watchlistServiceUtils.isValidString;
 
 
 public class DeleteWatchListActivity {
@@ -32,25 +34,22 @@ public class DeleteWatchListActivity {
     public DeleteWatchListResult handleRequest (final DeleteWatchListRequest deleteWatchListRequest) {
         log.info("Received UpdatePlaylistRequest {}", deleteWatchListRequest);
 
-        if(!watchlistServiceUtils.isValidString(deleteWatchListRequest.getWatchlistName())) {
+        if (!isValidString(deleteWatchListRequest.getWatchlistName())) {
             publishExceptionMetrics(true, false);
-            throw new InvalidAttributeValueException("Watchlist name [" + deleteWatchListRequest.getWatchlistName() +
-                "] contains illegal characters");
+            throw new IllegalArgumentException("Invalid user email or watchlist name");
         }
 
-        WatchList watchList = watchListDao.getWatchList(deleteWatchListRequest.getWatchlistName());
+        WatchList watchListToDelete = new WatchList();
 
-        if(!watchList.getWatchlistName().equals(deleteWatchListRequest.getWatchlistName())){
-            publishExceptionMetrics(false, true);
-            throw new SecurityException("You don't have a watch list to delete");
-        }
+        watchListToDelete.setUserEmail(deleteWatchListRequest.getEmail());
+        watchListToDelete.setWatchlistName(deleteWatchListRequest.getWatchlistName());
 
-        WatchList result = watchListDao.deleteWatchList(watchList);
+        WatchList result = watchListDao.deleteWatchList(watchListToDelete);
 
-        WatchListModel watchListToDelete = new ModelConverter().toWatchListModel(result);
+        WatchListModel watchListModel = new ModelConverter().deleteWatchlistModel(result);
 
         return DeleteWatchListResult.builder()
-                .witWatchListDelete(watchListToDelete)
+                .witWatchListDelete(watchListModel)
                 .build();
     }
 
