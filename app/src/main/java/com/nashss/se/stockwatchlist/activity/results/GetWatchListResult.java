@@ -1,13 +1,13 @@
 package com.nashss.se.stockwatchlist.activity.results;
 
-
+import com.nashss.se.stockwatchlist.activity.requests.GetWatchListRequest;
 import com.nashss.se.stockwatchlist.models.WatchListModel;
 
-public class DeleteWatchListResult {
+public class GetWatchListResult {
 
     private final WatchListModel watchList;
 
-    public DeleteWatchListResult(WatchListModel watchList) {
+    public GetWatchListResult (WatchListModel watchList) {
         this.watchList = watchList;
     }
 
@@ -17,7 +17,7 @@ public class DeleteWatchListResult {
 
     @Override
     public String toString() {
-        return "DeleteWatchListResult{" +
+        return "GetWatchListResult{" +
                 "watchList=" + watchList +
                 '}';
     }
@@ -27,16 +27,16 @@ public class DeleteWatchListResult {
     }
 
     public static class Builder {
+
         private WatchListModel watchList;
 
-        public Builder witWatchListDelete (WatchListModel watchList) {
+        public Builder withGetWatchList (WatchListModel watchList) {
             this.watchList = watchList;
             return this;
         }
 
-        public DeleteWatchListResult build() {
-            return new DeleteWatchListResult(watchList);
-        }
+        public GetWatchListResult build() { return new GetWatchListResult(watchList); }
+
     }
 
 }
