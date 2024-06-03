@@ -7,52 +7,135 @@
     <script type="text/javascript" src="assets/mainPage.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Times+New+Roman:wght@400;700&display=swap');
+
         body {
-            background-color: lightgrey; /* Set background color to light grey */
+            font-family: 'Times New Roman', serif;
+            background-color: #f0f0f0;
+            color: #333;
+            text-align: center;
             margin: 0;
             padding: 0;
-        }
-
-        .container {
-            text-align: center;
-            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
         }
 
         .header {
             width: 100%;
-            background-color: white;
-            text-align: center;
-            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
         }
 
-        .logoutButton {
-            position: absolute;
-            top: 30px;
-            left: 30px;
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .site-title {
+            flex: 1;
+            text-align: center;
+        }
+
+        .site-title a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            padding: 20px;
+            text-align: center;
+            margin-top: 70px; /* Adjusting margin-top to account for fixed header and some extra space */
+        }
+
+        #home {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px auto;
+            color: #4A4A4A;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+
+        #manage-watchlist {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        #watchlist-management {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        #watchlist-management input,
+        #watchlist-management button {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: none;
+        }
+
+        .create-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .clear-button {
+            background-color: #ff9900;
+            color: white;
+        }
+
+        .delete-button {
+            background-color: red;
+            color: white;
+        }
+
+        #createWatchlistUl {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #createWatchlistUl li {
+            padding: 10px;
+            background-color: #fff;
+            margin: 5px 0;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-
 <body>
-<header class="header" id="header">
-    <h1>Welcome to the Stock Watchlist Web Application</h1>
-</header>
 <div class="container">
     <section id="home">
-        <h2>Manage Your Watchlists</h2>
     </section>
     <section id="manage-watchlist">
-        <h3>Watchlists</h3>
+        <h3>Manage Your Watchlists</h3>
         <div id="watchlist-management">
             <input type="text" id="createWatchlistInput" placeholder="Watchlist Name">
-            <button id="createButton">Create</button>
-            <button id="clearButton">Clear</button>
-            <ul id="createWatchlistUl"></ul>
+            <button class="create-button" id="createButton">Create</button>
+            <button class="clear-button" id="clearButton">Clear</button>
+            <button class="delete-button" id="deleteButton">Delete</button>
         </div>
+        <ul id="createWatchlistUl"></ul>
     </section>
 </div>
 </body>
 </html>
-
-
 
