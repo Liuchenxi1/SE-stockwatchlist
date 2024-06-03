@@ -16,8 +16,8 @@ class MainPage extends BindingClass {
         document.getElementById('clearButton').addEventListener('click', this.clearWatchlist);
         document.getElementById('deleteButton').addEventListener('click', this.deleteWatchlist);
 
-        // Optionally, add the header to the page
         this.header.addHeaderToPage();
+
     }
 
     createWatchlist(evt) {
