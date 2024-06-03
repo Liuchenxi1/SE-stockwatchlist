@@ -23,7 +23,6 @@ public class GetWatchListActivity {
     private final WatchListDao watchListDao;
 
     @Inject
-
     public GetWatchListActivity(WatchListDao watchListDao) {
         this.watchListDao = watchListDao;
     }
@@ -31,19 +30,16 @@ public class GetWatchListActivity {
     public GetWatchListResult handleRequest (final GetWatchListRequest getWatchListRequest) {
         log.info("Received GetWatchListResult {}", getWatchListRequest);
 
-        String watchListName = getWatchListRequest.getWatchlistName();
-        WatchList result;
+        WatchList result = new WatchList();
+        result.setUserEmail(getWatchListRequest.getEmail());
+        result.setWatchlistName(getWatchListRequest.getWatchlistName());
 
-        try {
-            result = watchListDao.getWatchlist(watchListName);
-        } catch (WatchlistIsNotFoundException e) {
-            throw new WatchlistIsNotFoundException("There is no watchlist with the name: " + watchListName);
-        }
+        WatchList watchListToLoad = watchListDao.getWatchlist(result);
 
-        WatchListModel watchListModel = new ModelConverter().toWatchListModel(result);
+        WatchListModel listToLoad = new ModelConverter().toWatchListModel(watchListToLoad);
 
         return GetWatchListResult.builder()
-                .withGetWatchList(watchListModel)
+                .withGetWatchList(listToLoad)
                 .build();
     }
 }
