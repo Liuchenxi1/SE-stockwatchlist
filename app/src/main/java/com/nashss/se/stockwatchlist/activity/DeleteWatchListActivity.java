@@ -8,6 +8,7 @@ import com.nashss.se.stockwatchlist.activity.results.DeleteWatchListResult;
 import com.nashss.se.stockwatchlist.converters.ModelConverter;
 import com.nashss.se.stockwatchlist.dynamodb.WatchListDao;
 import com.nashss.se.stockwatchlist.dynamodb.models.WatchList;
+import com.nashss.se.stockwatchlist.execptions.WatchlistIsNotFoundException;
 import com.nashss.se.stockwatchlist.metrics.MetricsConstants;
 import com.nashss.se.stockwatchlist.metrics.MetricsPublisher;
 import com.nashss.se.stockwatchlist.models.WatchListModel;
@@ -32,7 +33,7 @@ public class DeleteWatchListActivity {
     }
 
     public DeleteWatchListResult handleRequest (final DeleteWatchListRequest deleteWatchListRequest) {
-        log.info("Received UpdatePlaylistRequest {}", deleteWatchListRequest);
+        log.info("Received UpdateWatchlistRequest {}", deleteWatchListRequest);
 
         if (!isValidString(deleteWatchListRequest.getWatchlistName())) {
             publishExceptionMetrics(true, false);
@@ -40,11 +41,14 @@ public class DeleteWatchListActivity {
         }
 
         WatchList watchListToDelete = new WatchList();
-
         watchListToDelete.setUserEmail(deleteWatchListRequest.getEmail());
         watchListToDelete.setWatchlistName(deleteWatchListRequest.getWatchlistName());
 
         WatchList result = watchListDao.deleteWatchList(watchListToDelete);
+
+        if(result == null) {
+            throw new WatchlistIsNotFoundException("Watchlist not found");
+        }
 
         WatchListModel watchListModel = new ModelConverter().deleteWatchlistModel(result);
 

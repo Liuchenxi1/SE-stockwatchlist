@@ -1,10 +1,8 @@
 package com.nashss.se.stockwatchlist.dependency;
 
 
-import com.nashss.se.stockwatchlist.activity.CreateWatchListActivity;
+import com.nashss.se.stockwatchlist.activity.*;
 
-import com.nashss.se.stockwatchlist.activity.DeleteWatchListActivity;
-import com.nashss.se.stockwatchlist.activity.SearchStockInfoActivity;
 import dagger.Component;
 
 import javax.inject.Singleton;
@@ -19,7 +17,7 @@ public interface ServiceComponent {
 
     SearchStockInfoActivity provideSearchStockInfoActivity();
 
-
+    GetWatchListActivity provideGetWatchListActivity();
 
 
 }
