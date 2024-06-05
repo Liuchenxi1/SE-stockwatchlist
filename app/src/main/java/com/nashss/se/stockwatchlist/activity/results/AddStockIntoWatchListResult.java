@@ -8,11 +8,11 @@ public class AddStockIntoWatchListResult {
     private final List<String> stockSymbols;
 
     public AddStockIntoWatchListResult(List<String> stockSymbols) {
-        this.stockSymbols = stockSymbols;
+        this.stockSymbols = new ArrayList<>(stockSymbols);
     }
 
     public List<String> getStockSymbols() {
-        return new ArrayList<>();
+        return new ArrayList<>(stockSymbols);
     }
 
     @Override
@@ -27,10 +27,10 @@ public class AddStockIntoWatchListResult {
     }
 
     public static class Builder {
-        private List<String> stockSymbols;
+        private List<String> stockSymbols = new ArrayList<>();
 
         public Builder withStockSymbols (List<String> stockSymbols) {
-            this.stockSymbols = new ArrayList<>();
+            this.stockSymbols = new ArrayList<>(stockSymbols);
             return this;
         }
 

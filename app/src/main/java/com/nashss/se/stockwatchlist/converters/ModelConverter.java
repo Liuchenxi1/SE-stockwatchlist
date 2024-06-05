@@ -38,13 +38,13 @@ public class ModelConverter {
                 .build();
     }
 
-    public List<String> addWatchlistModel(List<String>stockSymbols) {
-        stockSymbols = new ArrayList<>();
+    public List<WatchListModel> addWatchlistModel(List<WatchList> watchLists) {
+        List<WatchListModel> watchListModels = new ArrayList<>();
 
-        for (String stockSymbol : stockSymbols) {
-            stockSymbols.add(stockSymbol);
+        for (WatchList watchList : watchLists) {
+            watchListModels.add(toWatchListModel(watchList));
         }
-        return stockSymbols;
+        return watchListModels;
     }
 
     public List<String> removeWatchlistModel(List<String>stockSymbols) {
