@@ -38,6 +38,23 @@ public class ModelConverter {
                 .build();
     }
 
+    public List<String> addWatchlistModel(List<String>stockSymbols) {
+        stockSymbols = new ArrayList<>();
+
+        for (String stockSymbol : stockSymbols) {
+            stockSymbols.add(stockSymbol);
+        }
+        return stockSymbols;
+    }
+
+    public List<String> removeWatchlistModel(List<String>stockSymbols) {
+        for (String stockSymbol: stockSymbols) {
+            stockSymbols.remove(stockSymbol);
+        }
+
+        return stockSymbols;
+    }
+
     //TODO need more!!
 
 
