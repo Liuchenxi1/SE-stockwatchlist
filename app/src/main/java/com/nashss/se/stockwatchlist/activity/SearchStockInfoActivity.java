@@ -43,6 +43,7 @@ public class SearchStockInfoActivity {
 
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode rootNode = objectMapper.readTree(content.toString());
+//            StockInfo stockInfo = objectMapper.readValue(response.body(), StockInfo.class);
 
             JsonNode quoteNode = rootNode
                     .path("chart")

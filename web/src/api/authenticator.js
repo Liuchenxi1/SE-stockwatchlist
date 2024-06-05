@@ -33,6 +33,7 @@ export default class Authenticator extends BindingClass {
 
     async login() {
         await Auth.federatedSignIn();
+//        window.location.href = "mainPage.html";
     }
 
     async logout() {

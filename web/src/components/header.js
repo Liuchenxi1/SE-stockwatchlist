@@ -35,10 +35,14 @@ export default class Header extends BindingClass {
          header.appendChild(headerContent);
     }
 
+    async isUserLogin() {
+        return this.client.authenticator.isUserLoggedIn();
+    }
+
     createSiteTitle() {
         const homeButton = document.createElement('a');
         homeButton.classList.add('header_home');
-        homeButton.href = 'index.html';
+        homeButton.href = 'mainPage.html';
 
         homeButton.innerText = 'Stock Watchlist Application';
 
