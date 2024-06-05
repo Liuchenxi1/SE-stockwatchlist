@@ -25,7 +25,7 @@ public class SearchStockInfoActivity {
     }
 
     public SearchStockInfoResult fetchStockInfo (SearchStockInfoRequest request) throws StockInfoNotFoundException {
-        String url = "https://query1.finance.yahoo.com/v8/finance/chart/" + request.getSymbol() + "?interval=1d&range=365d";
+        String url = "https://query1.finance.yahoo.com/v8/finance/chart/" + request.getSymbol() + "?interval=1d&range=5d";
 
         try {
             URL yahooFinanceUrl = new URL(url);
