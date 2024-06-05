@@ -15,7 +15,7 @@ export default class MusicPlaylistClient extends BindingClass {
     constructor(props = {}) {
         super();
 
-        const methodsToBind = ['clientLoaded', 'getIdentity', 'login', 'logout', 'getPlaylist', 'getPlaylistSongs', 'createPlaylist', 'addTracker', 'compareJobTypes'];
+        const methodsToBind = ['clientLoaded', 'getIdentity', 'login', 'logout', 'getPlaylist', 'getPlaylistSongs', 'createPlaylist', 'addTracker'];
         this.bindClassMethods(methodsToBind, this);
 
         this.authenticator = new Authenticator();;
@@ -56,6 +56,7 @@ export default class MusicPlaylistClient extends BindingClass {
 
     async login() {
         this.authenticator.login();
+        
     }
 
     async logout() {
@@ -205,43 +206,7 @@ export default class MusicPlaylistClient extends BindingClass {
          * delete month and target goal to the DDB.
          * @returns The month and Target number.
        */
-    async deleteMonthAndTarget(month, targetAmount, errorCallback) {
-       try {
-          const token = await this.getTokenOrThrow("Only authenticated users can set monthly goal.");
-          const response = await this.axiosClient.delete(`hub/target/delete`, {data:{
-                    month: month,
-                    targetAmount: targetAmount,
-          },
-              headers: {
-                    Authorization: `Bearer ${token}`
-                    }
-                });
-                return response.data.target;
-          } catch (error) {
-                this.handleError(error, errorCallback)
-          }
-        }
 
-         /**
-         * Gets the compareJobTypesTable for the given date.
-         * @param date Unique identifier for tracker
-         * @param errorCallback (Optional) A function to execute if the call fails.
-         * @returns The compareJobTypes metadata.
-         */
-    async compareJobTypes(date, errorCallback) {
-        try {
-            const token = await this.getTokenOrThrow("Only authenticated users can set monthly goal.");
-            const response = await this.axiosClient.get(`hub/tracker/compare/${date}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                    }
-                });
-
-                return response.data.compareJobTypesMap;
-        } catch (error) {
-            this.handleError(error, errorCallback)
-        }
-    }
 
     /**
      * Search for a song.
