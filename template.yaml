@@ -320,7 +320,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: com.nashss.se.stockwatchlist.lambda.SearchStockInfo::handleRequest
+      Handler: com.nashss.se.stockwatchlist.lambda.SearchStockInfoLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64

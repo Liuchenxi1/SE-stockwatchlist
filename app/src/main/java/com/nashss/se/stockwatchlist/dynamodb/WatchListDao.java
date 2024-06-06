@@ -8,8 +8,6 @@ import com.nashss.se.stockwatchlist.metrics.MetricsConstants;
 import com.nashss.se.stockwatchlist.metrics.MetricsPublisher;
 
 import javax.inject.Inject;
-import java.util.HashMap;
-import java.util.Map;
 
 public class WatchListDao {
 
@@ -23,17 +21,17 @@ public class WatchListDao {
         this.metricsPublisher = metricsPublisher;
     }
 
-    public WatchList getWatchList(String email) {
-        WatchList watchList = this.dynamoDBMapper.load(WatchList.class, email);
-
-        if (watchList == null) {
-            metricsPublisher.addCount(MetricsConstants.GETWATCHLIST_WATCHLISTNOTFOUND_COUNT, 1);
-            throw new WatchlistIsNotFoundException("Could not find watchlist with email" + email);
-        }
-
-        metricsPublisher.addCount(MetricsConstants.GETWATCHLIST_WATCHLISTNOTFOUND_COUNT, 0);
-        return watchList;
-    }
+//    public WatchList getWatchListByEmail(String email) {
+//        WatchList watchLists = this.dynamoDBMapper.query(WatchList.class, email);
+//
+//        if (watchList == null) {
+//            metricsPublisher.addCount(MetricsConstants.GETWATCHLIST_WATCHLISTNOTFOUND_COUNT, 1);
+//            throw new WatchlistIsNotFoundException("Could not find watchlist with email" + email);
+//        }
+//
+//        metricsPublisher.addCount(MetricsConstants.GETWATCHLIST_WATCHLISTNOTFOUND_COUNT, 0);
+//        return watchLists;
+//    }
 
     public WatchList saveWatchList(WatchList watchList) {
         this.dynamoDBMapper.save(watchList);
