@@ -2,9 +2,6 @@ package com.nashss.se.stockwatchlist.activity.results;
 
 import com.nashss.se.stockwatchlist.models.WatchListModel;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RemoveStockFromWatchListResult {
 
     private final WatchListModel watchList;
@@ -37,8 +34,8 @@ public class RemoveStockFromWatchListResult {
             return this;
         }
 
-        public AddStockIntoWatchListResult build() {
-            return new AddStockIntoWatchListResult(watchList);
+        public RemoveStockFromWatchListResult build() {
+            return new RemoveStockFromWatchListResult(watchList);
         }
     }
 }
