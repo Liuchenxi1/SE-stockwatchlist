@@ -8,15 +8,22 @@ public class RemoveStockFromWatchListRequest {
 
     private final String email;
 
+    private final String watchlistName;
+
     private final String stockSymbol;
 
-    public RemoveStockFromWatchListRequest(String email, String stockSymbol) {
+    public RemoveStockFromWatchListRequest(String email, String watchlistName, String stockSymbol) {
         this.email = email;
+        this.watchlistName = watchlistName;
         this.stockSymbol = stockSymbol;
     }
 
     public String getEmail() {
         return email;
+    }
+
+    public String getWatchlistName() {
+        return watchlistName;
     }
 
     public String getStockSymbol() {
@@ -27,6 +34,7 @@ public class RemoveStockFromWatchListRequest {
     public String toString() {
         return "RemoveStockFromWatchListRequest{" +
                 "email='" + email + '\'' +
+                ", watchlistName='" + watchlistName + '\'' +
                 ", stockSymbol='" + stockSymbol + '\'' +
                 '}';
     }
@@ -38,19 +46,26 @@ public class RemoveStockFromWatchListRequest {
 
         private String email;
 
+        private String watchlistName;
+
         private String stockSymbol;
 
-        public RemoveStockFromWatchListRequest.Builder withEmail(String email) {
+        public Builder withEmail(String email) {
             this.email = email;
             return this;
         }
 
-        public RemoveStockFromWatchListRequest.Builder withStockSymbol (String stockSymbol) {
+        public Builder withWatchlistName (String watchlistName) {
+            this.watchlistName = watchlistName;
+            return this;
+        }
+
+        public Builder withStockSymbol (String stockSymbol) {
             this.stockSymbol = stockSymbol;
             return this;
         }
 
-        public RemoveStockFromWatchListRequest build() {return new RemoveStockFromWatchListRequest(email, stockSymbol); }
+        public RemoveStockFromWatchListRequest build() {return new RemoveStockFromWatchListRequest(email, watchlistName, stockSymbol); }
 
     }
 }
