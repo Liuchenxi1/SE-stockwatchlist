@@ -21,5 +21,7 @@ public interface ServiceComponent {
 
     AddStockIntoWatchListActivity provideAddStockIntoWatchListActivity();
 
+    RemoveStockFromWatchListActivity provideRemoveStockFromWatchListActivity();
+
 
 }

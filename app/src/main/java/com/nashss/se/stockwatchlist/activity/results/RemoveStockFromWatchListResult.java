@@ -1,41 +1,41 @@
 package com.nashss.se.stockwatchlist.activity.results;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.nashss.se.stockwatchlist.models.WatchListModel;
 
 public class RemoveStockFromWatchListResult {
 
-    private final List<String> stockSymbols;
+    private final WatchListModel watchList;
 
-    public RemoveStockFromWatchListResult(List<String> stockSymbols) {
-        this.stockSymbols = stockSymbols;
+    public RemoveStockFromWatchListResult(WatchListModel watchList) {
+        this.watchList = watchList;
     }
 
-    public List<String> getStockSymbols() {
-        return new ArrayList<>();
+    public WatchListModel getWatchList() {
+        return watchList;
     }
 
     @Override
     public String toString() {
         return "RemoveStockFromWatchListResult{" +
-                "stockSymbols=" + stockSymbols +
+                "watchList=" + watchList +
                 '}';
     }
 
-    public static RemoveStockFromWatchListResult.Builder builder() {
-        return new RemoveStockFromWatchListResult.Builder();
+    public static Builder builder() {
+        return new Builder();
     }
 
     public static class Builder {
-        private List<String> stockSymbols;
 
-        public RemoveStockFromWatchListResult.Builder withStockSymbols (List<String> stockSymbols) {
-            this.stockSymbols = new ArrayList<>();
+        private WatchListModel watchList;
+
+        public Builder withWatchListModel (WatchListModel watchList) {
+            this.watchList = watchList;
             return this;
         }
 
         public RemoveStockFromWatchListResult build() {
-            return new RemoveStockFromWatchListResult(stockSymbols);
+            return new RemoveStockFromWatchListResult(watchList);
         }
     }
 }

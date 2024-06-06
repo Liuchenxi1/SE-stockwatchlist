@@ -24,7 +24,7 @@ public class AddStockIntoWatchListActivity {
     }
 
     public AddStockIntoWatchListResult handleRequest(final AddStockIntoWatchListRequest addStockIntoWatchListRequest) {
-        log.info("Received AddSongToPlaylistRequest {} ", addStockIntoWatchListRequest);
+        log.info("Received add stock into list request {} ", addStockIntoWatchListRequest);
 
         String stock = addStockIntoWatchListRequest.getStockSymbol();
 
