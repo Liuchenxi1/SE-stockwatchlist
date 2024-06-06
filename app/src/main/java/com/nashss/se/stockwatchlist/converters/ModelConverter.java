@@ -29,7 +29,6 @@ public class ModelConverter {
                 .build();
     }
 
-    //TODO
 
     public WatchListModel deleteWatchlistModel(WatchList watchList) {
         return WatchListModel.builder()
@@ -41,21 +40,12 @@ public class ModelConverter {
     public List<WatchListModel> addWatchlistModel(List<WatchList> watchLists) {
         List<WatchListModel> watchListModels = new ArrayList<>();
 
-        for (WatchList watchList : watchLists) {
+        for(WatchList watchList: watchLists) {
             watchListModels.add(toWatchListModel(watchList));
         }
+
         return watchListModels;
     }
-
-    public List<String> removeWatchlistModel(List<String>stockSymbols) {
-        for (String stockSymbol: stockSymbols) {
-            stockSymbols.remove(stockSymbol);
-        }
-
-        return stockSymbols;
-    }
-
-    //TODO need more!!
 
 
 }

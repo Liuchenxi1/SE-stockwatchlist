@@ -1,24 +1,27 @@
 package com.nashss.se.stockwatchlist.activity.results;
 
+import com.nashss.se.stockwatchlist.dynamodb.models.WatchList;
+import com.nashss.se.stockwatchlist.models.WatchListModel;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class AddStockIntoWatchListResult {
 
-    private final List<String> stockSymbols;
+    private final WatchListModel watchList;
 
-    public AddStockIntoWatchListResult(List<String> stockSymbols) {
-        this.stockSymbols = new ArrayList<>(stockSymbols);
+    public AddStockIntoWatchListResult(WatchListModel watchList) {
+        this.watchList = watchList;
     }
 
-    public List<String> getStockSymbols() {
-        return new ArrayList<>(stockSymbols);
+    public WatchListModel getWatchList() {
+        return watchList;
     }
 
     @Override
     public String toString() {
         return "AddStockIntoWatchListResult{" +
-                "stockSymbols=" + stockSymbols +
+                "watchList=" + watchList +
                 '}';
     }
 
@@ -27,15 +30,16 @@ public class AddStockIntoWatchListResult {
     }
 
     public static class Builder {
-        private List<String> stockSymbols = new ArrayList<>();
 
-        public Builder withStockSymbols (List<String> stockSymbols) {
-            this.stockSymbols = new ArrayList<>(stockSymbols);
+        private WatchListModel watchList;
+
+        public Builder withWatchListModel (WatchListModel watchList) {
+            this.watchList = watchList;
             return this;
         }
 
         public AddStockIntoWatchListResult build() {
-            return new AddStockIntoWatchListResult(stockSymbols);
+            return new AddStockIntoWatchListResult(watchList);
         }
     }
 }

@@ -19,5 +19,7 @@ public interface ServiceComponent {
 
     GetWatchListActivity provideGetWatchListActivity();
 
+    AddStockIntoWatchListActivity provideAddStockIntoWatchListActivity();
+
 
 }

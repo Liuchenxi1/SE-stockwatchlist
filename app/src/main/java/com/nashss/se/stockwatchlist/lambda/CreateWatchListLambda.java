@@ -18,7 +18,7 @@ public class CreateWatchListLambda
     public LambdaResponse handleRequest (AuthenticatedLambdaRequest<CreateWatchListRequest> input, Context context) {
         return super.runActivity(() -> {
             CreateWatchListRequest unauthenticatedRequest = input.fromBody(CreateWatchListRequest.class);
-           log.info("the stock symbols are{}" ,unauthenticatedRequest.getStockSymbols());
+            log.info("the stock symbols are{}" ,unauthenticatedRequest.getStockSymbols());
             return input.fromUserClaims(claims ->
                     CreateWatchListRequest.builder()
                             .withEmail(claims.get("email"))
@@ -27,8 +27,7 @@ public class CreateWatchListLambda
                             .build());
         },
                 (request, serviceComponent) ->
-                        serviceComponent.provideCreateWatchListActivity().handleRequest(request))
-                ;
+                        serviceComponent.provideCreateWatchListActivity().handleRequest(request));
     }
 
 }
