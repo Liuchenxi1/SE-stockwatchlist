@@ -37,13 +37,12 @@ public class ModelConverter {
                 .build();
     }
 
-    public List<WatchListModel> addWatchlistModel(List<WatchList> watchLists) {
+    public List<WatchListModel> addWatchlist(List<WatchList> watchLists) {
         List<WatchListModel> watchListModels = new ArrayList<>();
 
         for(WatchList watchList: watchLists) {
-            watchListModels.add(toWatchListModel(watchList));
+            watchListModels.add (toWatchListModel(watchList));
         }
-
         return watchListModels;
     }
 

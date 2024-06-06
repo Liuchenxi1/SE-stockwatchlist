@@ -26,24 +26,30 @@ public class AddStockIntoWatchListActivity {
     public AddStockIntoWatchListResult handleRequest(final AddStockIntoWatchListRequest addStockIntoWatchListRequest) {
         log.info("Received AddSongToPlaylistRequest {} ", addStockIntoWatchListRequest);
 
-//        String stock = addStockIntoWatchListRequest.getStockSymbol();
+        String stock = addStockIntoWatchListRequest.getStockSymbol();
 
-        WatchList watchList = new WatchList();
+        WatchList toUpdate = new WatchList();
+        toUpdate.setUserEmail(addStockIntoWatchListRequest.getEmail());
+        toUpdate.setWatchlistName(addStockIntoWatchListRequest.getWatchlistName());
 
-        watchList.setUserEmail(addStockIntoWatchListRequest.getEmail());
-        watchList.setWatchlistName(addStockIntoWatchListRequest.getWatchlistName());
+       WatchList updateWatchList = watchListDao.getWatchlist(toUpdate);
 
-        watchList = watchListDao.getWatchList(addStockIntoWatchListRequest.getWatchlistName());
-
-        if (!watchList.getWatchlistName().equals(addStockIntoWatchListRequest.getWatchlistName())) {
+        if (updateWatchList == null ) {
             throw new SecurityException("You don't own this watchlist to add stock to it.");
         }
 
-        watchList.getStockSymbols().add(addStockIntoWatchListRequest.getStockSymbol());
+        List<String> list = updateWatchList.getStockSymbols();
+        list.add(stock);
 
-        watchList = watchListDao.saveWatchList(watchList);
+        log.info("the list of this watchlist is: {}", updateWatchList.getStockSymbols().size());
 
-        WatchListModel watchListModel = new ModelConverter().toWatchListModel(watchList);
+        log.info("the list is: {}", list.size());
+
+        toUpdate.setStockSymbols(list);
+
+        WatchList updatedWatchList = watchListDao.saveWatchList(toUpdate);
+
+        WatchListModel watchListModel = new ModelConverter().toWatchListModel(updatedWatchList);
 
         return AddStockIntoWatchListResult.builder()
                 .withWatchListModel(watchListModel)
