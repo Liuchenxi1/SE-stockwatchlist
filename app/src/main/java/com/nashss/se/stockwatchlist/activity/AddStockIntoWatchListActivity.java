@@ -41,8 +41,6 @@ public class AddStockIntoWatchListActivity {
         List<String> list = updateWatchList.getStockSymbols();
         list.add(stock);
 
-        log.info("the list of this watchlist is: {}", updateWatchList.getStockSymbols().size());
-
         log.info("the list is: {}", list.size());
 
         toUpdate.setStockSymbols(list);
