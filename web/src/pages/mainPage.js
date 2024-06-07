@@ -6,7 +6,6 @@ class MainPage extends BindingClass {
     constructor() {
         super();
         this.bindClassMethods(['mount', 'createWatchlist', 'clearWatchlist', 'deleteWatchlist'], this);
-
         this.dataStore = new DataStore();
         this.header = new Header(this.dataStore);
     }
@@ -17,6 +16,7 @@ class MainPage extends BindingClass {
         document.getElementById('deleteButton').addEventListener('click', this.deleteWatchlist);
 
         this.header.addHeaderToPage();
+        this.client = new muiscPlaylistClient();
 
     }
 

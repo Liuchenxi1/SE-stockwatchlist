@@ -7,7 +7,7 @@
 }
 
 .background {
-    background-color: #8A8C8F;
+    background-color: #FFD0D0;
     margin: 0;
     counter-reset: section;
     font-family: "Helvetica Neue",Helvetica,sans-serif;
@@ -20,7 +20,8 @@
     align-items: center;
     background-color: var(--primary-color);
     color: var(--secondary-color);
-    padding: 4px 20px;
+    position: fixed
+    padding: 10px 20px;
 }
 
 .button {
@@ -28,7 +29,7 @@
   border: none;
   border-radius: 20px;
   color: var(--secondary-color);
-  padding: 6px 8px 4px 8px;
+  padding: 40px 8px 4px 8px;
   text-align: center;
   font-weight: bold;
   text-decoration: none;
@@ -78,6 +79,7 @@
     flex-direction: column;
 }
 
+
 .tags {
     display: flex;
     flex-direction: row;
@@ -93,18 +95,6 @@
     border-radius: 16px;
 }
 
-.song {
-    padding: 2px;
-    display: flex;
-}
-
-.song .title {
-    flex: 20%;
-}
-
-.song .album {
-    flex: 80%;
-}
 
 /*
 Flexbox on a lists removes the numbers. We use a counter here to add them back.
@@ -136,4 +126,19 @@ th {
 a {
     color: var(--tertiary-color);
     text-decoration: none;
+}
+
+.quote, .author {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: var(--secondary-color);
+}
+
+.image-container img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

@@ -3,116 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stock Watchlist Web Application</title>
     <script type="text/javascript" src="assets/index.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Times+New+Roman:wght@400;700&display=swap');
-
-        body {
-            font-family: 'Times New Roman', serif;
-            background-color: #f0f0f0;
-            color: #333;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .header {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #333;
-            color: #fff;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 60%; /* Adjust this width to control the spacing */
-        }
-
-        .site-title {
-            flex: 1;
-            text-align: left;
-        }
-
-        .site-title a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .user .button {
-            color: #fff;
-            text-decoration: none;
-            padding: 8px 16px;
-            background-color: #ff9900;
-            border-radius: 4px;
-        }
-
-        .container {
-            padding: 20px;
-            text-align: center;
-            margin-top: 70px; /* Adjusting margin-top to account for fixed header and some extra space */
-        }
-
-        .quote {
-            font-size: 24px;
-            font-weight: bold;
-            margin: 20px auto;
-            color: #4A4A4A;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-        }
-
-        .author {
-            font-size: 18px;
-            margin-top: 10px;
-            color: #333;
-        }
-
-        .image-container {
-            margin: 20px 0;
-        }
-
-        .image-container img {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-    </style>
 </head>
-<body>
+<body class="background">
 <header class="header" id="header">
+<!--    <h1 class="header_home">Stock Watchlist Application</h1>-->
 </header>
-<div class="container">
+<div class="card-container">
+    <div class=card-content>
     <div class="image-container">
-        <img src="https://cdn.britannica.com/04/3804-050-EB9DD403/Theodore-Roosevelt.jpg">
+        <img src="https://cdn.britannica.com/04/3804-050-EB9DD403/Theodore-Roosevelt.jpg" alt="Theodore Roosevelt" class="card-content">
     </div>
-    <div class="quote">
+        <div class="quote">
         “The Credit Belongs To The Man Who Is Actually In The Arena, Whose Face Is Marred By Dust And Sweat And Blood;
         Who Strives Valiantly; Who Errs, Who Comes Short Again And Again, Because There Is No Effort Without Error And Shortcoming;
         But Who Does Actually Strive To Do The Deeds;"
-    </div>
-    <div class ="author">
+        </div>
+        <div class="author">
         Roosevelt's "The Man in the Arena"
+        </div>
     </div>
 </div>
 </body>
 </html>
+
 
