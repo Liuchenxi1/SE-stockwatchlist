@@ -1,6 +1,7 @@
 import Header from '../components/header';
 import BindingClass from "../util/bindingClass";
 import DataStore from "../util/DataStore";
+import MusicPlaylistClient from '../api/musicPlaylistClient';
 
 class MainPage extends BindingClass {
     constructor() {
@@ -16,22 +17,33 @@ class MainPage extends BindingClass {
         document.getElementById('deleteButton').addEventListener('click', this.deleteWatchlist);
 
         this.header.addHeaderToPage();
-        this.client = new muiscPlaylistClient();
+        this.client = new MusicPlaylistClient();
 
     }
 
     createWatchlist(evt) {
         evt.preventDefault();
 
-        const createInput = document.getElementById("createWatchlistInput").value;
+        const watchlistName = document.getElementById("createWatchlistInput").value;
 
-        if (createInput.trim() === "") {
+        if (watchlistName.trim() === "") {
             alert("Watchlist name cannot be empty");
             return;
         }
 
+       const stockSymbols = document.getElementById("createStockSymbolsList").value;
+
+       if (stockSymbols.trim() === "") {
+                    alert("Watchlist name cannot be empty");
+                    return;
+       }
+
+       const stockSymbolsArray =  stockSymbols.split(",").map(symbol => symbol.trim());
+
+        this.client.createWatchlist(watchlistName,stockSymbols);
+
         const li = document.createElement("li");
-        li.textContent = createInput;
+        li.textContent = watchlistName;
 
         document.getElementById("createWatchlistUl").appendChild(li);
 

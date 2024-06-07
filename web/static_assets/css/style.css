@@ -41,6 +41,10 @@
     justify-content: space-between;
 }
 
+.loginlogout {
+    float: right;
+}
+
 .header_home {
     font-size: 36px;
     line-height: 40px;
