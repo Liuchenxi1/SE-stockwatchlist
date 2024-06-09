@@ -7,7 +7,7 @@
 }
 
 .background {
-    background-color: #8A8C8F;
+    background-color: #F8F4E1;
     margin: 0;
     counter-reset: section;
     font-family: "Helvetica Neue",Helvetica,sans-serif;
@@ -20,16 +20,18 @@
     align-items: center;
     background-color: var(--primary-color);
     color: var(--secondary-color);
-    padding: 4px 20px;
+    position: center;
+    padding: 5px 5px;
 }
+
 
 .button {
   background-color: var(--tertiary-color);
   border: none;
   border-radius: 20px;
   color: var(--secondary-color);
-  padding: 6px 8px 4px 8px;
-  text-align: center;
+  padding: 4px 8px 4px 8px;
+  text-align: flex;
   font-weight: bold;
   text-decoration: none;
   cursor: pointer;
@@ -38,6 +40,10 @@
 .button-group {
     display:flex;
     justify-content: space-between;
+}
+
+.loginlogout {
+    float: right;
 }
 
 .header_home {
@@ -78,6 +84,7 @@
     flex-direction: column;
 }
 
+
 .tags {
     display: flex;
     flex-direction: row;
@@ -93,36 +100,18 @@
     border-radius: 16px;
 }
 
-.song {
-    padding: 2px;
-    display: flex;
-}
-
-.song .title {
-    flex: 20%;
-}
-
-.song .album {
-    flex: 80%;
-}
 
 /*
 Flexbox on a lists removes the numbers. We use a counter here to add them back.
 https://stackoverflow.com/a/34316093
 https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Lists_and_Counters/Using_CSS_counters
 */
-.song:before {
-    counter-increment: section;
-    content: counter(section) ".";
-    position: absolute;
-    margin-left: -40px;
-}
 
 .hidden {
     display: none;
 }
 
-/* table styles */ 
+/* table styles */
 
 th, td {
     padding: 15px;
@@ -136,4 +125,32 @@ th {
 a {
     color: var(--tertiary-color);
     text-decoration: none;
+}
+
+.quote, .author {
+    font-size: 1.2em;
+    color: #543310;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 600px; /* Adjust the max-width to control the width of the quote and author text */
+    padding: 0 20px;
+}
+
+.container {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

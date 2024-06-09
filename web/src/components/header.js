@@ -44,8 +44,6 @@ export default class Header extends BindingClass {
         homeButton.classList.add('header_home');
         homeButton.href = 'mainPage.html';
 
-        homeButton.innerText = 'Stock Watchlist Application';
-
         const siteTitle = document.createElement('div');
         siteTitle.classList.add('site-title');
         siteTitle.appendChild(homeButton);
@@ -77,6 +75,7 @@ export default class Header extends BindingClass {
     createButton(text, clickHandler) {
         const button = document.createElement('a');
         button.classList.add('button');
+        button.classList.add('loginlogout');
         button.href = '#';
         button.innerText = text;
 
