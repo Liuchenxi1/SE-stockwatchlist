@@ -1,7 +1,7 @@
 import Header from '../components/header';
 import BindingClass from "../util/bindingClass";
 import DataStore from "../util/DataStore";
-import MusicPlaylistClient from '../api/musicPlaylistClient';
+import StockWatchListClient from '../api/stockWatchListClient';
 
 class MainPage extends BindingClass {
     constructor() {
@@ -17,51 +17,70 @@ class MainPage extends BindingClass {
         document.getElementById('deleteButton').addEventListener('click', this.deleteWatchlist);
 
         this.header.addHeaderToPage();
-        this.client = new MusicPlaylistClient();
+        this.client = new StockWatchListClient();
 
     }
 
     createWatchlist(evt) {
         evt.preventDefault();
 
-        const watchlistName = document.getElementById("createWatchlistInput").value;
+        const watchlistName = document.getElementById("watchlistInput").value;
 
         if (watchlistName.trim() === "") {
             alert("Watchlist name cannot be empty");
             return;
         }
 
-       const stockSymbols = document.getElementById("createStockSymbolsList").value;
+        const stockSymbols = document.getElementById("stockSymbolsInput").value;
 
        if (stockSymbols.trim() === "") {
                     alert("Watchlist name cannot be empty");
                     return;
        }
 
-       const stockSymbolsArray =  stockSymbols.split(",").map(symbol => symbol.trim());
+       const stockSymbolsArray =  stockSymbols.split(",");
 
-        this.client.createWatchlist(watchlistName,stockSymbols);
+        this.client.createWatchlist(watchlistName,stockSymbolsArray);
 
         const li = document.createElement("li");
         li.textContent = watchlistName;
 
-        document.getElementById("createWatchlistUl").appendChild(li);
+        document.getElementById("watchlistUl").appendChild(li);
 
-        document.getElementById("createWatchlistInput").value = "";
+        document.getElementById("watchlistInput").value = "";
+        document.getElementById("stockSymbolsInput").value ="";
     }
 
     clearWatchlist(evt) {
         evt.preventDefault();
-        document.getElementById("createWatchlistInput").value = "";
+        document.getElementById("watchlistInput").value = "";
+        document.getElementById("stockSymbolsInput").value = "";
     }
 
     deleteWatchlist(evt) {
         evt.preventDefault();
-        const watchlistUl = document.getElementById("createWatchlistUl");
-        while (watchlistUl.firstChild) {
-            watchlistUl.removeChild(watchlistUl.firstChild);
+
+        const watchlistName = document.getElementById("watchlistInput").value;
+
+        if (watchlistName.trim() === "") {
+            alert("Watchlist name cannot be empty");
+            return;
         }
+
+        this.client.deleteWatchlist(watchlistName);
+
+        const li = document.createElement("li");
+        li.textContent = watchlistName;
+
+        document.getElementById("watchlistUl").appendChild(li);
+
+        document.getElementById("watchlistInput").value ="";
     }
+
+    
+
+
+
 }
 
 /**
