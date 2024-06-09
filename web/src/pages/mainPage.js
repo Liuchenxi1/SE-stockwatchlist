@@ -77,6 +77,21 @@ class MainPage extends BindingClass {
         document.getElementById("watchlistInput").value ="";
     }
 
+    displayResults() {
+        const showMonth = this.dataStore.get("month");
+        const showTarget = this.dataStore.get("target_amount");
+
+        if (showMonth === '' || showTarget === '') {
+
+            searchCriteriaDisplay.innerHTML = '';
+            searchResultsDisplay.innerHTML = '';
+        } else {
+           document.getElementById('results').innerHTML = this.getHTMLForResults();
+           //TODO get the results endpoints (list) to display the result table.
+
+        }
+    }
+
     
 
 
