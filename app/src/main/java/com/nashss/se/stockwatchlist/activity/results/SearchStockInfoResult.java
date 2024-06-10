@@ -2,37 +2,43 @@ package com.nashss.se.stockwatchlist.activity.results;
 
 import com.nashss.se.stockwatchlist.models.StockInfo;
 
-public class
-SearchStockInfoResult {
+import java.util.List;
 
-    private final StockInfo stockInfo;
 
-    private SearchStockInfoResult (StockInfo stockInfo) {
-        this.stockInfo = stockInfo;
+public class SearchStockInfoResult {
 
+    private final List<StockInfo> stockInfoList;
+
+    private SearchStockInfoResult(List<StockInfo> stockInfoList) {
+        this.stockInfoList = stockInfoList;
     }
 
-    public StockInfo getStockInfo() {
-        return stockInfo;
+    public List<StockInfo> getStockInfoList() {
+        return stockInfoList;
     }
 
     @Override
     public String toString() {
         return "SearchStockInfoResult{" +
-                "stockInfo=" + stockInfo +
+                "stockInfoList=" + stockInfoList +
                 '}';
     }
 
-    public static Builder builder() { return new Builder(); }
+    public static Builder builder() {
+        return new Builder();
+    }
 
     public static class Builder {
-        private StockInfo stockInfo;
+        private List<StockInfo> stockInfoList;
 
-        public Builder withStockInfo (StockInfo stockInfo) {
-            this.stockInfo = stockInfo;
+        public Builder withStockInfoList(List<StockInfo> stockInfoList) {
+            this.stockInfoList = stockInfoList;
             return this;
         }
 
-        public SearchStockInfoResult build() { return new SearchStockInfoResult(stockInfo); }
+        public SearchStockInfoResult build() {
+            return new SearchStockInfoResult(stockInfoList);
+        }
     }
 }
+
