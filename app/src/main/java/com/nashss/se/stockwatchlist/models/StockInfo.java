@@ -122,6 +122,6 @@ public class StockInfo {
         public StockInfo build() {
             return new StockInfo(timestamps, opens, closes, lows, highs, volumes);
         }
+
     }
 }
-

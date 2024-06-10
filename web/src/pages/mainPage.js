@@ -6,7 +6,7 @@ import StockWatchListClient from '../api/stockWatchListClient';
 class MainPage extends BindingClass {
     constructor() {
         super();
-        this.bindClassMethods(['mount', 'createWatchlist', 'clearWatchlist', 'deleteWatchlist'], this);
+        this.bindClassMethods(['mount', 'createWatchlist', 'clearWatchlist', 'deleteWatchlist','addWatchlistToPage'], this);
         this.dataStore = new DataStore();
         this.header = new Header(this.dataStore);
     }
@@ -40,7 +40,7 @@ class MainPage extends BindingClass {
 
        const stockSymbolsArray =  stockSymbols.split(",");
 
-        this.client.createWatchlist(watchlistName,stockSymbolsArray);
+       this.client.createWatchlist(watchlistName,stockSymbolsArray);
 
         const li = document.createElement("li");
         li.textContent = watchlistName;
@@ -77,6 +77,25 @@ class MainPage extends BindingClass {
         document.getElementById("watchlistInput").value ="";
     }
 
+ addWatchlistToPage() {
+        const watchlist = this.dataStore.get('watchlist');
+        const watchlistContainer = document.getElementById('watchlistContainer');
+        if (!watchlist) {
+            watchlistContainer.innerHTML = "<p>No watchlist available</p>";
+            return;
+        }
+
+        const { name, stockSymbols } = watchlist;
+
+        document.getElementById('watchlist-name').innerText = name;
+
+        let stockSymbolsHtml = '';
+        stockSymbols.forEach(symbol => {
+            stockSymbolsHtml += `<div class="stock-symbol">${symbol}</div>`;
+        });
+
+        document.getElementById('stock-symbols').innerHTML = stockSymbolsHtml;
+    }
     
 
 

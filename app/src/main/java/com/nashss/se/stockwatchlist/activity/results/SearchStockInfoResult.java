@@ -2,7 +2,8 @@ package com.nashss.se.stockwatchlist.activity.results;
 
 import com.nashss.se.stockwatchlist.models.StockInfo;
 
-public class SearchStockInfoResult {
+public class
+SearchStockInfoResult {
 
     private final StockInfo stockInfo;
 

@@ -2,7 +2,7 @@ import axios from "axios";
 import BindingClass from "../util/bindingClass";
 import Authenticator from "./authenticator";
 
-export default class MusicPlaylistClient extends BindingClass {
+export default class StockWatchListClient extends BindingClass {
 
     constructor(props = {}) {
         super();
@@ -83,7 +83,7 @@ export default class MusicPlaylistClient extends BindingClass {
 
     async deleteWatchlist(watchlistName, errorCallback) {
         try {
-            const token = await this.getTokenOrThrow("Only authenticated users can delete playlists.");
+            const token = await this.getTokenOrThrow("Only authenticated users can delete watchlist.");
             const response = await this.axiosClient.delete(`watchlists`, {
                 data: { watchlistName: watchlistName },  // use 'data' to send the request body in DELETE
                 headers: {
@@ -95,6 +95,10 @@ export default class MusicPlaylistClient extends BindingClass {
             this.handleError(error, errorCallback);
         }
     }
+
+    // async searchStockInfo(stock, errorCallback) {
+    // }
+
 
     handleError(error, errorCallback) {
         console.error(error);
