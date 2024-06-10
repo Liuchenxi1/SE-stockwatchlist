@@ -97,6 +97,10 @@ class MainPage extends BindingClass {
         document.getElementById('stock-symbols').innerHTML = stockSymbolsHtml;
     }
 
+
+
+
+
     
 
 
