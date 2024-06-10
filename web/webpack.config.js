@@ -29,6 +29,7 @@ module.exports = {
 //    hub: path.resolve(__dirname,'src','pages','hub.js')
     index: path.resolve(__dirname,'src','pages','index.js'),
     mainPage: path.resolve(__dirname,'src','pages','mainPage.js'),
+    stockInfo: path.resolve(__dirname,'src','pages','stockInfo.js'),
   },
   output: {
     path: path.resolve(__dirname, 'build', 'assets'),
