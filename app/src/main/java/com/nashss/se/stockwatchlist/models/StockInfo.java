@@ -2,14 +2,14 @@ package com.nashss.se.stockwatchlist.models;
 
 public class StockInfo {
 
-    private final long timestamp;
+    private final String timestamp;
     private final double open;
     private final double close;
     private final double low;
     private final double high;
     private final int volume;
 
-    private StockInfo(long timestamp, double open, double close, double low, double high, int volume) {
+    private StockInfo(String timestamp, double open, double close, double low, double high, int volume) {
         this.timestamp = timestamp;
         this.open = open;
         this.close = close;
@@ -18,7 +18,7 @@ public class StockInfo {
         this.volume = volume;
     }
 
-    public long getTimestamp() {
+    public String getTimestamp() {
         return timestamp;
     }
 
@@ -59,14 +59,14 @@ public class StockInfo {
     }
 
     public static class Builder {
-        private long timestamp;
+        private String timestamp;
         private double open;
         private double close;
         private double low;
         private double high;
         private int volume;
 
-        public Builder withTimestamp(long timestamp) {
+        public Builder withTimestamp(String timestamp) {
             this.timestamp = timestamp;
             return this;
         }
