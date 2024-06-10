@@ -37,4 +37,6 @@ class SearchStockInfoRequestTest {
 
         System.out.println(request);
     }
+
+
 }
