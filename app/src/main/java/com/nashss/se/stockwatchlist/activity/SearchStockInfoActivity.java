@@ -85,16 +85,8 @@ public class SearchStockInfoActivity {
                 LocalDateTime dateTime = LocalDateTime.ofInstant(instant, ZoneOffset.UTC);
                 String formattedDate = dateTime.format(formatter);
 
-                System.out.println("Date: " + formattedDate);
-                System.out.println("Open: " + openArray[i]);
-                System.out.println("Close: " + closeArray[i]);
-                System.out.println("Low: " + lowArray[i]);
-                System.out.println("High: " + highArray[i]);
-                System.out.println("Volume: " + volumeArray[i]);
-                System.out.println(); // For an empty line between entries
-
                 StockInfo stockInfo = StockInfo.builder()
-                        .withTimestamp(timestampArray[i])
+                        .withTimestamp(formattedDate)
                         .withOpen(openArray[i])
                         .withClose(closeArray[i])
                         .withLow(lowArray[i])
