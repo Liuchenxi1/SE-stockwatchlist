@@ -77,7 +77,7 @@ class MainPage extends BindingClass {
         document.getElementById("watchlistInput").value ="";
     }
 
- addWatchlistToPage() {
+    addWatchlistToPage() {
         const watchlist = this.dataStore.get('watchlist');
         const watchlistContainer = document.getElementById('watchlistContainer');
         if (!watchlist) {

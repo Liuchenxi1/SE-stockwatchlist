@@ -15,6 +15,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SearchStockInfoActivity {
     private final Logger logger = LogManager.getLogger();
@@ -24,7 +30,7 @@ public class SearchStockInfoActivity {
     public SearchStockInfoActivity() {
     }
 
-    public SearchStockInfoResult fetchStockInfo (SearchStockInfoRequest request) throws StockInfoNotFoundException {
+    public SearchStockInfoResult fetchStockInfo(SearchStockInfoRequest request) throws StockInfoNotFoundException {
         String url = "https://query1.finance.yahoo.com/v8/finance/chart/" + request.getSymbol() + "?interval=1d&range=5d";
 
         try {
@@ -43,7 +49,6 @@ public class SearchStockInfoActivity {
 
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode rootNode = objectMapper.readTree(content.toString());
-//            StockInfo stockInfo = objectMapper.readValue(response.body(), StockInfo.class);
 
             JsonNode quoteNode = rootNode
                     .path("chart")
@@ -71,21 +76,40 @@ public class SearchStockInfoActivity {
             double[] highArray = objectMapper.treeToValue(highNode, double[].class);
             long[] timestampArray = objectMapper.treeToValue(timestampNode, long[].class);
 
-            StockInfo stockInfo = StockInfo.builder()
-                    .withTimestamps(timestampArray)
-                    .withOpens(openArray)
-                    .withCloses(closeArray)
-                    .withLows(lowArray)
-                    .withHighs(highArray)
-                    .withVolumes(volumeArray)
-                    .build();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+            List<StockInfo> stockInfoList = new ArrayList<>();
+
+            for (int i = 0; i < timestampArray.length; i++) {
+                Instant instant = Instant.ofEpochSecond(timestampArray[i]);
+                LocalDateTime dateTime = LocalDateTime.ofInstant(instant, ZoneOffset.UTC);
+                String formattedDate = dateTime.format(formatter);
+
+                System.out.println("Date: " + formattedDate);
+                System.out.println("Open: " + openArray[i]);
+                System.out.println("Close: " + closeArray[i]);
+                System.out.println("Low: " + lowArray[i]);
+                System.out.println("High: " + highArray[i]);
+                System.out.println("Volume: " + volumeArray[i]);
+                System.out.println(); // For an empty line between entries
+
+                StockInfo stockInfo = StockInfo.builder()
+                        .withTimestamp(timestampArray[i])
+                        .withOpen(openArray[i])
+                        .withClose(closeArray[i])
+                        .withLow(lowArray[i])
+                        .withHigh(highArray[i])
+                        .withVolume(volumeArray[i])
+                        .build();
+
+                stockInfoList.add(stockInfo);
+            }
 
             return SearchStockInfoResult.builder()
-                    .withStockInfo(stockInfo)
+                    .withStockInfoList(stockInfoList)
                     .build();
 
-        } catch (IOException e) //why this part can't use StockInfoNotFound?
-        {
+        } catch (IOException e) {
             logger.error("Error fetching stock information: ", e);
             throw new StockInfoNotFoundException("Stock is not found", e);
         }
