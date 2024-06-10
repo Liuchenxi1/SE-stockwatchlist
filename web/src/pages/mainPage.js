@@ -6,7 +6,7 @@ import StockWatchListClient from '../api/stockWatchListClient';
 class MainPage extends BindingClass {
     constructor() {
         super();
-        this.bindClassMethods(['mount', 'createWatchlist', 'clearWatchlist', 'deleteWatchlist','addWatchlistToPage'], this);
+        this.bindClassMethods(['mount', 'createWatchlist', 'clearWatchlist', 'deleteWatchlist','addWatchlistToPage','redirectToStockInfo'], this);
         this.dataStore = new DataStore();
         this.header = new Header(this.dataStore);
     }
@@ -15,6 +15,7 @@ class MainPage extends BindingClass {
         document.getElementById('createButton').addEventListener('click', this.createWatchlist);
         document.getElementById('clearButton').addEventListener('click', this.clearWatchlist);
         document.getElementById('deleteButton').addEventListener('click', this.deleteWatchlist);
+        document.getElementById('searchButton').addEventListener('click', this.redirectToStockInfo);
 
         this.header.addHeaderToPage();
         this.client = new StockWatchListClient();
@@ -96,6 +97,16 @@ class MainPage extends BindingClass {
 
         document.getElementById('stock-symbols').innerHTML = stockSymbolsHtml;
     }
+
+     redirectToStockInfo(evt) {
+            const stockSymbol = document.getElementById("stockSearchInput").value;
+            if (stockSymbol.trim() === "") {
+                alert("Please enter a stock symbol.");
+                return;
+            }
+            window.location.href = `stockInfo.html`;
+     }
+
 
 
 
