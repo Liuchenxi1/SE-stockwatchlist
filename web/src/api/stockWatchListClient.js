@@ -7,7 +7,7 @@ export default class StockWatchListClient extends BindingClass {
     constructor(props = {}) {
         super();
 
-        const methodsToBind = ['clientLoaded', 'getIdentity', 'login', 'logout', 'createWatchlist'];
+        const methodsToBind = ['clientLoaded', 'getIdentity', 'login', 'logout', 'createWatchlist','searchStockInfo'];
         this.bindClassMethods(methodsToBind, this);
 
         this.authenticator = new Authenticator();;
@@ -85,7 +85,7 @@ export default class StockWatchListClient extends BindingClass {
         try {
             const token = await this.getTokenOrThrow("Only authenticated users can delete watchlist.");
             const response = await this.axiosClient.delete(`watchlists`, {
-                data: { watchlistName: watchlistName },  // use 'data' to send the request body in DELETE
+                data: { watchlistName: watchlistName },
                 headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -96,9 +96,15 @@ export default class StockWatchListClient extends BindingClass {
         }
     }
 
-    // async searchStockInfo(stock, errorCallback) {
-    // }
-
+    async searchStockInfo(stockSymbol, errorCallback) {
+        try {
+             const response = await this.axiosClient.get(`/stock/{stockSymbol}`);
+             return response.data.stockInfoList;
+        } catch (error) {
+             console.error('Error fetching stock information:', error.message);
+             return [];
+        }
+    }
 
     handleError(error, errorCallback) {
         console.error(error);

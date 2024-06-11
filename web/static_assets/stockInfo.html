@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="assets/stockInfo.js"></script>
+    <title>Stock Information</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="assets/stockInfo.js"></script>
 </head>
 <body>
 <header class="header" id="header">
@@ -15,12 +16,10 @@
     </section>
     <section id="manage-stockInfo">
         <div id="stockInfo">
-            <input type="text" id="stockInfoInput" placeholder="Enter stock symbol">
-            <button id="searchButton">Search</button>
-            <button class="clear-button" id="clearButton">Clear</button>
-            <ul id="stockInfoUl"></ul>
+            <div id="stock-info-table"></div>
         </div>
     </section>
+    <button id="mainPageButton">Go to Main Page</button>
 </div>
 </body>
 </html>

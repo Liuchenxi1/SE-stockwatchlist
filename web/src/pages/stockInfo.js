@@ -7,44 +7,55 @@ class StockInfo extends BindingClass {
 
     constructor() {
         super();
-        this.bindClassMethods(['mount', 'searchStock'], this);
+        this.bindClassMethods(['mount', 'generateStockInfoTable', 'redirectToMainPage', 'loadStockInfo'], this);
         this.dataStore = new DataStore();
         this.header = new Header(this.dataStore);
     }
 
     mount() {
-        document.getElementById('searchButtom').addEventListener('click', this.searchInfo);
-        document.getElementById('deleteButton').addEventListener('click', this.cleartheInput);
+        this.header.addHeaderToPage();
+        this.redirectToMainPage();
+
+        const stockSymbol = localStorage.getItem('stockSymbol');
     }
 
-    searchInfo(evt) {
-        evt.preventDefault();
-
-        if (StockInfo.trim() === "") {
-            alert("Watchlist name cannot be empty");
-            return;
+    generateStockInfoTable(stockInfoList) {
+        if (stockInfoList.length === 0) {
+            return "<p>No stock information available.</p>";
         }
-
-        const stock = document.getElementById("stockInfoInput").value;
-
-        this.client.StockWatchListClient
-
-
-
-
-
+        let tableHTML = "<table>";
+        tableHTML += "<tr><th>Date</th><th>Open</th><th>Close</th><th>Low</th><th>High</th><th>Volume</th></tr>";
+        stockInfoList.forEach(stock => {
+            tableHTML += `<tr><td>${stock.timestamp}</td><td>${stock.open}</td><td>${stock.close}</td><td>${stock.low}</td><td>${stock.high}</td><td>${stock.volume}</td></tr>`;
+        });
+        tableHTML += "</table>";
+        return tableHTML;
     }
 
-    cleartheInput(evt) {
-        evt.preventDefault();
-        document.getElementById("stockInfoInput").value = "";
+    redirectToMainPage() {
+        document.getElementById("mainPageButton").addEventListener("click", function() {
+            window.location.href = "mainPage.html";
+        });
+    }
+
+    async loadStockInfo(stockSymbol) {
+            try {
+                const stockInfoList = await this.client.searchStockInfo(stockSymbol,errorCallback);
+                const stockInfoTableHTML = this.generateStockInfoTable(stockInfoList);
+                document.getElementById('stock-info-table').innerHTML = stockInfoTableHTML;
+            } catch (error) {
+                console.error("Failed to load stock information", error);
+                document.getElementById('stock-info-table').innerHTML = "<p>Failed to load stock information.</p>";
+            }
     }
 
 }
 
-const mian = async () => {
+const main = async () => {
     const searchInfo = new StockInfo();
-    searchInfo.mount();
+    await searchInfo.mount();
 };
 
 window.addEventListener('DOMContentLoaded', main);
+
+

@@ -8,6 +8,7 @@ class MainPage extends BindingClass {
         super();
         this.bindClassMethods(['mount', 'createWatchlist', 'clearWatchlist', 'deleteWatchlist','addWatchlistToPage','redirectToStockInfo'], this);
         this.dataStore = new DataStore();
+        this.dataStore.addChangeListener(this.displayWatchlistResults);
         this.header = new Header(this.dataStore);
     }
 
@@ -19,7 +20,6 @@ class MainPage extends BindingClass {
 
         this.header.addHeaderToPage();
         this.client = new StockWatchListClient();
-
     }
 
     createWatchlist(evt) {
@@ -78,6 +78,7 @@ class MainPage extends BindingClass {
         document.getElementById("watchlistInput").value ="";
     }
 
+    //this part is going to show the watchlist on the database.
     addWatchlistToPage() {
         const watchlist = this.dataStore.get('watchlist');
         const watchlistContainer = document.getElementById('watchlistContainer');
@@ -104,15 +105,15 @@ class MainPage extends BindingClass {
                 alert("Please enter a stock symbol.");
                 return;
             }
+            localStorage.setItem('stockSymbol', stockSymbol);
             window.location.href = `stockInfo.html`;
      }
 
+     displayWatchlistResults() {
+        const watchlistResults = this.dataStore.get('watchlistName');
 
+     }
 
-
-
-
-    
 
 
 
