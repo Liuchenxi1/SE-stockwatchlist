@@ -22,12 +22,7 @@ public class SearchStockInfoLambda
            return input.fromUserClaims(claims ->
                    SearchStockInfoRequest.builder()
                            .withSymbol(unauthenticatedRequest.getSymbol())
-                           .withTimestamps(unauthenticatedRequest.getTimestamps())
-                           .withOpens(unauthenticatedRequest.getOpens())
-                           .withCloses(unauthenticatedRequest.getCloses())
-                           .withLows(unauthenticatedRequest.getLows())
-                           .withHighs(unauthenticatedRequest.getHighs())
-                           .withVolumes(unauthenticatedRequest.getVolumes())
+                           .withStockInfoList(unauthenticatedRequest.getStockInfoList())
                            .build());
        },
                (request, serviceComponent) ->

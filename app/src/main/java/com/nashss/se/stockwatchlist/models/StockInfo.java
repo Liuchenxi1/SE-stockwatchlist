@@ -1,127 +1,105 @@
 package com.nashss.se.stockwatchlist.models;
 
-import java.util.Arrays;
-
 public class StockInfo {
-    private long[] timestamps;
-    private double[] opens;
-    private double[] closes;
-    private double[] lows;
-    private double[] highs;
-    private Integer[] volumes;
 
-    public StockInfo(long[] timestamps, double[] opens, double[] closes, double[] lows, double[] highs, Integer[] volumes) {
-        this.timestamps = timestamps;
-        this.opens = opens;
-        this.closes = closes;
-        this.lows = lows;
-        this.highs = highs;
-        this.volumes = volumes;
+    private final String timestamp;
+    private final double open;
+    private final double close;
+    private final double low;
+    private final double high;
+    private final int volume;
+
+    private StockInfo(String timestamp, double open, double close, double low, double high, int volume) {
+        this.timestamp = timestamp;
+        this.open = open;
+        this.close = close;
+        this.low = low;
+        this.high = high;
+        this.volume = volume;
     }
 
-    public long[] getTimestamps() {
-        return timestamps;
+    public String getTimestamp() {
+        return timestamp;
     }
 
-    public double[] getOpens() {
-        return opens;
+    public double getOpen() {
+        return open;
     }
 
-    public double[] getCloses() {
-        return closes;
+    public double getClose() {
+        return close;
     }
 
-    public double[] getLows() {
-        return lows;
+    public double getLow() {
+        return low;
     }
 
-    public double[] getHighs() {
-        return highs;
+    public double getHigh() {
+        return high;
     }
 
-    public Integer[] getVolumes() {
-        return volumes;
-    }
-
-    public void setTimestamps(long[] timestamps) {
-        this.timestamps = timestamps;
-    }
-
-    public void setOpens(double[] opens) {
-        this.opens = opens;
-    }
-
-    public void setCloses(double[] closes) {
-        this.closes = closes;
-    }
-
-    public void setLows(double[] lows) {
-        this.lows = lows;
-    }
-
-    public void setHighs(double[] highs) {
-        this.highs = highs;
-    }
-
-    public void setVolumes(Integer[] volumes) {
-        this.volumes = volumes;
+    public int getVolume() {
+        return volume;
     }
 
     @Override
     public String toString() {
         return "StockInfo{" +
-                "timestamps=" + Arrays.toString(timestamps) +
-                ", opens=" + Arrays.toString(opens) +
-                ", closes=" + Arrays.toString(closes) +
-                ", lows=" + Arrays.toString(lows) +
-                ", highs=" + Arrays.toString(highs) +
-                ", volumes=" + Arrays.toString(volumes) +
+                "timestamp=" + timestamp +
+                ", open=" + open +
+                ", close=" + close +
+                ", low=" + low +
+                ", high=" + high +
+                ", volume=" + volume +
                 '}';
     }
 
-    public static Builder builder() { return new Builder(); }
+    public static Builder builder() {
+        return new Builder();
+    }
 
     public static class Builder {
-        private long[] timestamps;
-        private double[] opens;
-        private double[] closes;
-        private double[] lows;
-        private double[] highs;
-        private Integer[] volumes;
+        private String timestamp;
+        private double open;
+        private double close;
+        private double low;
+        private double high;
+        private int volume;
 
-        public Builder withTimestamps(long[] timestamps) {
-            this.timestamps = timestamps;
+        public Builder withTimestamp(String timestamp) {
+            this.timestamp = timestamp;
             return this;
         }
 
-        public Builder withOpens(double[] opens) {
-            this.opens = opens;
+        public Builder withOpen(double open) {
+            this.open = open;
             return this;
         }
 
-        public Builder withCloses(double[] closes) {
-            this.closes = closes;
+        public Builder withClose(double close) {
+            this.close = close;
             return this;
         }
 
-        public Builder withLows(double[] lows) {
-            this.lows = lows;
+        public Builder withLow(double low) {
+            this.low = low;
             return this;
         }
 
-        public Builder withHighs(double[] highs) {
-            this.highs = highs;
+        public Builder withHigh(double high) {
+            this.high = high;
             return this;
         }
 
-        public Builder withVolumes(Integer[] volumes) {
-            this.volumes = volumes;
+        public Builder withVolume(int volume) {
+            this.volume = volume;
             return this;
         }
 
         public StockInfo build() {
-            return new StockInfo(timestamps, opens, closes, lows, highs, volumes);
+            return new StockInfo(timestamp, open, close, low, high, volume);
         }
     }
 }
+
 
