@@ -98,7 +98,7 @@ export default class StockWatchListClient extends BindingClass {
 
     async searchStockInfo(stockSymbol, errorCallback) {
         try {
-             const response = await this.axiosClient.get(`/stock/{stockSymbol}`);
+             const response = await this.axiosClient.get(`/stock/${stockSymbol}`);
              return response.data.stockInfoList;
         } catch (error) {
              console.error('Error fetching stock information:', error.message);

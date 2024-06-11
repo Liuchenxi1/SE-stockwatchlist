@@ -16,7 +16,13 @@ class StockInfo extends BindingClass {
         this.header.addHeaderToPage();
         this.redirectToMainPage();
 
-        const stockSymbol = localStorage.getItem('stockSymbol');
+        const urlParams = new URLSearchParams(window.location.search);
+        const stockSymbol = urlParams.get('stockSymbol');
+
+        this.client = new StockWatchListClient();
+
+        this.loadStockInfo(stockSymbol);
+
     }
 
     generateStockInfoTable(stockInfoList) {
@@ -40,7 +46,7 @@ class StockInfo extends BindingClass {
 
     async loadStockInfo(stockSymbol) {
             try {
-                const stockInfoList = await this.client.searchStockInfo(stockSymbol,errorCallback);
+                const stockInfoList = await this.client.searchStockInfo(stockSymbol,()=> {});
                 const stockInfoTableHTML = this.generateStockInfoTable(stockInfoList);
                 document.getElementById('stock-info-table').innerHTML = stockInfoTableHTML;
             } catch (error) {

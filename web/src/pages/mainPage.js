@@ -9,6 +9,7 @@ class MainPage extends BindingClass {
         this.bindClassMethods(['mount', 'createWatchlist', 'clearWatchlist', 'deleteWatchlist','addWatchlistToPage','redirectToStockInfo'], this);
         this.dataStore = new DataStore();
         this.dataStore.addChangeListener(this.displayWatchlistResults);
+        //I have function but it doesn't run.
         this.header = new Header(this.dataStore);
     }
 
@@ -20,6 +21,7 @@ class MainPage extends BindingClass {
 
         this.header.addHeaderToPage();
         this.client = new StockWatchListClient();
+        //right here, I need request to call the endpoint to download the table data.
     }
 
     createWatchlist(evt) {
@@ -105,13 +107,12 @@ class MainPage extends BindingClass {
                 alert("Please enter a stock symbol.");
                 return;
             }
-            localStorage.setItem('stockSymbol', stockSymbol);
-            window.location.href = `stockInfo.html`;
+
+            window.location.href = `stockInfo.html?stockSymbol=${stockSymbol}`;
      }
 
      displayWatchlistResults() {
         const watchlistResults = this.dataStore.get('watchlistName');
-
      }
 
 
