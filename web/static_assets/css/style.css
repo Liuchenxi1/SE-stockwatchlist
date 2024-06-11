@@ -154,3 +154,14 @@ a {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.search-bar {
+    display: flex;
+    align-items:
+    margin-right: 20px; /* Added to push the search bar to the right */
+}
+
+#stockSearchInput {
+    margin-right: 10px;
+}
+

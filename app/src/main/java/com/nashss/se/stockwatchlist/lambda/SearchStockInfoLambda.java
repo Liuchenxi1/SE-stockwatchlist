@@ -16,6 +16,7 @@ public class SearchStockInfoLambda
     @Override
     public LambdaResponse handleRequest (AuthenticatedLambdaRequest<SearchStockInfoRequest> input, Context context) {
        return super.runActivity(() -> {
+           //it should be fromPath,
            SearchStockInfoRequest unauthenticatedRequest = input.fromBody(SearchStockInfoRequest.class);
 
            return input.fromUserClaims(claims ->
