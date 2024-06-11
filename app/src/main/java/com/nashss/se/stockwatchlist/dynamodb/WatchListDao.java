@@ -3,21 +3,15 @@ package com.nashss.se.stockwatchlist.dynamodb;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
-import com.amazonaws.services.dynamodbv2.datamodeling.PaginatedQueryList;
-import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
-import com.amazonaws.services.lambda.runtime.events.models.dynamodb.AttributeValue;
+import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.nashss.se.stockwatchlist.dynamodb.models.WatchList;
 import com.nashss.se.stockwatchlist.execptions.WatchlistIsNotFoundException;
-import com.nashss.se.stockwatchlist.metrics.MetricsConstants;
 import com.nashss.se.stockwatchlist.metrics.MetricsPublisher;
 
 import javax.inject.Inject;
-import javax.print.attribute.Attribute;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.locks.Condition;
 
 public class WatchListDao {
 
