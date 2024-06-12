@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -57,7 +58,7 @@ public class SearchStockInfoActivity {
 
 
     public SearchStockInfoResult fetchStockInfo(SearchStockInfoRequest request) throws StockInfoNotFoundException {
-        String url = "https://query1.finance.yahoo.com/v8/finance/chart/" + request.getSymbol() + "?interval=1d&range=5d";
+        String url = "https://query1.finance.yahoo.com/v8/finance/chart/" + request.getSymbol() + "?interval=1d&range=30d";
 
         try {
             URL yahooFinanceUrl = new URL(url);
@@ -103,6 +104,7 @@ public class SearchStockInfoActivity {
             long[] timestampArray = objectMapper.treeToValue(timestampNode, long[].class);
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            DecimalFormat decimalFormat = new DecimalFormat("#.00");
 
             List<StockInfo> stockInfoList = new ArrayList<>();
 
@@ -113,10 +115,10 @@ public class SearchStockInfoActivity {
 
                 StockInfo stockInfo = StockInfo.builder()
                         .withTimestamp(formattedDate)
-                        .withOpen(openArray[i])
-                        .withClose(closeArray[i])
-                        .withLow(lowArray[i])
-                        .withHigh(highArray[i])
+                        .withOpen(Double.parseDouble(decimalFormat.format(openArray[i])))
+                        .withClose(Double.parseDouble(decimalFormat.format(closeArray[i])))
+                        .withLow(Double.parseDouble(decimalFormat.format(lowArray[i])))
+                        .withHigh(Double.parseDouble(decimalFormat.format(highArray[i])))
                         .withVolume(volumeArray[i])
                         .build();
 
