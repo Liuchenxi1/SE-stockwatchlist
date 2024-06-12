@@ -106,6 +106,8 @@ export default class StockWatchListClient extends BindingClass {
         }
     }
 
+    // Getwatchlists ....xxxxxx
+
     handleError(error, errorCallback) {
         console.error(error);
 

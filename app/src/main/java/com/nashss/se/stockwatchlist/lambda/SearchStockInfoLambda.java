@@ -22,7 +22,7 @@ public class SearchStockInfoLambda
         return super.runActivity(
                 () -> input.fromPath(path ->
                         SearchStockInfoRequest.builder()
-                                .withSymbol(path.get("stockSymbol"))
+                                .withSymbol(path.get("symbol"))
                                 .build()),
                (request, serviceComponent) ->
                        serviceComponent.provideSearchStockInfoActivity().fetchStockInfo(request)

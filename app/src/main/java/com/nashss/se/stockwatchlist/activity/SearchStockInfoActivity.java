@@ -2,6 +2,9 @@ package com.nashss.se.stockwatchlist.activity;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.DoubleNode;
+import com.fasterxml.jackson.databind.node.IntNode;
 import com.nashss.se.stockwatchlist.activity.requests.SearchStockInfoRequest;
 import com.nashss.se.stockwatchlist.activity.results.SearchStockInfoResult;
 import com.nashss.se.stockwatchlist.execptions.StockInfoNotFoundException;
@@ -29,6 +32,29 @@ public class SearchStockInfoActivity {
     @Inject
     public SearchStockInfoActivity() {
     }
+
+    private JsonNode replaceNullWithDefault(JsonNode node, double defaultValue) {
+        if (node.isArray()) {
+            for (int i = 0; i < node.size(); i++) {
+                if (node.get(i).isNull()) {
+                    ((ArrayNode) node).set(i, new DoubleNode(defaultValue));
+                }
+            }
+        }
+        return node;
+    }
+
+    private JsonNode replaceNullWithDefault(JsonNode node, int defaultValue) {
+        if (node.isArray()) {
+            for (int i = 0; i < node.size(); i++) {
+                if (node.get(i).isNull()) {
+                    ((ArrayNode) node).set(i, new IntNode(defaultValue));
+                }
+            }
+        }
+        return node;
+    }
+
 
     public SearchStockInfoResult fetchStockInfo(SearchStockInfoRequest request) throws StockInfoNotFoundException {
         String url = "https://query1.finance.yahoo.com/v8/finance/chart/" + request.getSymbol() + "?interval=1d&range=5d";
@@ -63,11 +89,11 @@ public class SearchStockInfoActivity {
                     .get(0)
                     .path("timestamp");
 
-            JsonNode volumeNode = quoteNode.path("volume");
-            JsonNode lowNode = quoteNode.path("low");
-            JsonNode closeNode = quoteNode.path("close");
-            JsonNode openNode = quoteNode.path("open");
-            JsonNode highNode = quoteNode.path("high");
+            JsonNode volumeNode = replaceNullWithDefault(quoteNode.path("volume"), 0);
+            JsonNode lowNode = replaceNullWithDefault(quoteNode.path("low"), 0.00);
+            JsonNode closeNode = replaceNullWithDefault(quoteNode.path("close"), 0.00);
+            JsonNode openNode = replaceNullWithDefault(quoteNode.path("open"), 0.00);
+            JsonNode highNode = replaceNullWithDefault(quoteNode.path("high"), 0.00);
 
             Integer[] volumeArray = objectMapper.treeToValue(volumeNode, Integer[].class);
             double[] lowArray = objectMapper.treeToValue(lowNode, double[].class);
