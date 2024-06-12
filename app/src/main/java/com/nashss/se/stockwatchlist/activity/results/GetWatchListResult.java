@@ -1,6 +1,5 @@
 package com.nashss.se.stockwatchlist.activity.results;
 
-import com.nashss.se.stockwatchlist.activity.requests.GetWatchListRequest;
 import com.nashss.se.stockwatchlist.models.WatchListModel;
 
 public class GetWatchListResult {

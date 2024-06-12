@@ -37,7 +37,7 @@ public class ModelConverter {
                 .build();
     }
 
-    public List<WatchListModel> addWatchlist(List<WatchList> watchLists) {
+    public List<WatchListModel> toWatchlistModels(List<WatchList> watchLists) {
         List<WatchListModel> watchListModels = new ArrayList<>();
 
         for(WatchList watchList: watchLists) {
