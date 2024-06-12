@@ -106,7 +106,21 @@ export default class StockWatchListClient extends BindingClass {
         }
     }
 
-    // Getwatchlists ....xxxxxx
+    async getWatchLists() {
+         try {
+                const token = await this.getTokenOrThrow("Only authenticated users can request watchlists.");
+                const response = await this.axiosClient.get(`/watchlists`, {
+                headers: {
+                       Authorization: `Bearer ${token}`
+                }
+                });
+                return response.data.watchLists;
+                } catch (error) {
+                     console.error('Error fetching stock information:', error.message);
+                     return [];
+                }
+
+    }
 
     handleError(error, errorCallback) {
         console.error(error);

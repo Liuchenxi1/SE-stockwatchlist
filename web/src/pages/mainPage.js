@@ -6,10 +6,10 @@ import StockWatchListClient from '../api/stockWatchListClient';
 class MainPage extends BindingClass {
     constructor() {
         super();
-        this.bindClassMethods(['mount', 'createWatchlist', 'clearWatchlist', 'deleteWatchlist','addWatchlistToPage','redirectToStockInfo'], this);
+        this.bindClassMethods(['mount', 'createWatchlist', 'clearWatchlist', 'deleteWatchlist','addWatchlistToPage','redirectToStockInfo','clientLoaded','addWatchlistToPage'], this);
         this.dataStore = new DataStore();
-        this.dataStore.addChangeListener(this.displayWatchlistResults);
-        //I have function but it doesn't run.
+        this.dataStore.addChangeListener(this.addWatchlistToPage);
+
         this.header = new Header(this.dataStore);
     }
 
@@ -21,7 +21,14 @@ class MainPage extends BindingClass {
 
         this.header.addHeaderToPage();
         this.client = new StockWatchListClient();
-        //right here, I need request to call the endpoint to download the table data.
+        this.clientLoaded();
+    }
+
+ async clientLoaded() {
+
+        const watchlist = await this.client.getWatchLists();
+        this.dataStore.set('watchlist', watchlist);
+
     }
 
     createWatchlist(evt) {
@@ -83,22 +90,15 @@ class MainPage extends BindingClass {
     //this part is going to show the watchlist on the database.
     addWatchlistToPage() {
         const watchlist = this.dataStore.get('watchlist');
-        const watchlistContainer = document.getElementById('watchlistContainer');
-        if (!watchlist) {
-            watchlistContainer.innerHTML = "<p>No watchlist available</p>";
-            return;
-        }
 
-        const { name, stockSymbols } = watchlist;
+              let stockSymbolsHtml = '';
+              let el;
+              for (el of watchlist) {
+                  stockSymbolsHtml += '<li>' + el.watchlistName + "" + el.email + " " + el.stockSymbols +'<li>';
+              }
 
-        document.getElementById('watchlist-name').innerText = name;
+        document.getElementById('watchlistUl').innerHTML = stockSymbolsHtml;
 
-        let stockSymbolsHtml = '';
-        stockSymbols.forEach(symbol => {
-            stockSymbolsHtml += `<div class="stock-symbol">${symbol}</div>`;
-        });
-
-        document.getElementById('stock-symbols').innerHTML = stockSymbolsHtml;
     }
 
      redirectToStockInfo(evt) {
@@ -110,12 +110,6 @@ class MainPage extends BindingClass {
 
             window.location.href = `stockInfo.html?stockSymbol=${stockSymbol}`;
      }
-
-     displayWatchlistResults() {
-        const watchlistResults = this.dataStore.get('watchlistName');
-     }
-
-
 
 
 }
