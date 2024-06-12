@@ -254,12 +254,33 @@ Resources:
             Method: put
 
 
-  GetWatchListLambda:
+#  GetWatchListLambda:
+#    Type: AWS::Serverless::Function
+#    Properties:
+#      Role: !GetAtt AccessRole.Arn
+#      CodeUri: app
+#      Handler: com.nashss.se.stockwatchlist.lambda.GetWatchListLambda::handleRequest
+#      Runtime: java11
+#      Architectures:
+#        - x86_64
+#      MemorySize: 512
+#      Environment:
+#        Variables:
+#          JAVA_TOOL_OPTIONS: -XX:+TieredCompilation -XX:TieredStopAtLevel=1
+#      Events:
+#        MusicPlaylistService:
+#          Type: Api
+#          Properties:
+#            Path: /watchlists/{name}
+#            Method: get
+
+
+  GetWatchListsLambda:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: com.nashss.se.stockwatchlist.lambda.GetWatchListLambda::handleRequest
+      Handler: com.nashss.se.stockwatchlist.lambda.GetWatchListsLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -271,7 +292,7 @@ Resources:
         MusicPlaylistService:
           Type: Api
           Properties:
-            Path: /watchlists/{name}
+            Path: /watchlists
             Method: get
 
 
