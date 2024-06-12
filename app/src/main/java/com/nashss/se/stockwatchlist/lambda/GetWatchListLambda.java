@@ -18,7 +18,7 @@ public class GetWatchListLambda extends LambdaActivityRunner<GetWatchListRequest
         return super.runActivity(() -> {
                     GetWatchListRequest unauthenticatedRequest = input.fromBody(GetWatchListRequest.class);
 
-                    log.info("Deleting watchlist: {}", unauthenticatedRequest.getWatchlistName());
+                    log.info("getting watchlist: {}", unauthenticatedRequest.getWatchlistName());
 
                     return input.fromUserClaims(claims ->
                             GetWatchListRequest.builder()
