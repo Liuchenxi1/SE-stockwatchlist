@@ -24,7 +24,7 @@ class MainPage extends BindingClass {
         this.clientLoaded();
     }
 
- async clientLoaded() {
+    async clientLoaded() {
 
         const watchlist = await this.client.getWatchLists();
         this.dataStore.set('watchlist', watchlist);
@@ -51,14 +51,15 @@ class MainPage extends BindingClass {
        const stockSymbolsArray =  stockSymbols.split(",");
 
        this.client.createWatchlist(watchlistName,stockSymbolsArray);
+       this.lastAddedWatchlistName = watchlistName;
 
-        const li = document.createElement("li");
-        li.textContent = watchlistName;
-
-        document.getElementById("watchlistUl").appendChild(li);
+       const tbody = document.getElementById("watchlistTbody");
+       const tr = document.createElement("tr");
+       tr.innerHTML = `<td>${watchlistName}</td><td>${stockSymbols}</td>`;
+       tbody.appendChild(tr);
 
         document.getElementById("watchlistInput").value = "";
-        document.getElementById("stockSymbolsInput").value ="";
+        document.getElementById("stockSymbolsInput").value = "";
     }
 
     clearWatchlist(evt) {
@@ -79,26 +80,30 @@ class MainPage extends BindingClass {
 
         this.client.deleteWatchlist(watchlistName);
 
-        const li = document.createElement("li");
-        li.textContent = watchlistName;
-
-        document.getElementById("watchlistUl").appendChild(li);
+        const tbody = document.getElementById("watchlistTbody");
+        const rows = tbody.getElementsByTagName("tr");
+        for (let i = 0; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName("td");
+                if (cells[0].textContent === watchlistName) {
+                tbody.removeChild(rows[i]);
+                break;
+                 }
+        }
 
         document.getElementById("watchlistInput").value ="";
     }
 
-    //this part is going to show the watchlist on the database.
-    addWatchlistToPage() {
+     addWatchlistToPage() {
         const watchlist = this.dataStore.get('watchlist');
-
-              let stockSymbolsHtml = '';
-              let el;
-              for (el of watchlist) {
-                  stockSymbolsHtml += '<li>' + el.watchlistName + "" + el.email + " " + el.stockSymbols +'<li>';
-              }
-
-        document.getElementById('watchlistUl').innerHTML = stockSymbolsHtml;
-
+        let stockSymbolsHtml = '';
+        for (const el of watchlist) {
+            stockSymbolsHtml += `
+                <tr>
+                    <td>${el.watchlistName}</td>
+                    <td>${el.stockSymbols}</td>
+                </tr>`;
+        }
+        document.getElementById('watchlistTbody').innerHTML = stockSymbolsHtml;
     }
 
      redirectToStockInfo(evt) {

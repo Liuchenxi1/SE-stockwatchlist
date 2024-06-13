@@ -10,7 +10,7 @@
     background-color: #F8F4E1;
     margin: 0;
     counter-reset: section;
-    font-family: "Helvetica Neue",Helvetica,sans-serif;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
 .header {
@@ -20,25 +20,22 @@
     align-items: center;
     background-color: var(--primary-color);
     color: var(--secondary-color);
-    position: center;
     padding: 5px 5px;
 }
 
-
 .button {
-  background-color: var(--tertiary-color);
-  border: none;
-  border-radius: 20px;
-  color: var(--secondary-color);
-  padding: 4px 8px 4px 8px;
-  text-align: flex;
-  font-weight: bold;
-  text-decoration: none;
-  cursor: pointer;
+    background-color: var(--tertiary-color);
+    border: none;
+    border-radius: 20px;
+    color: var(--secondary-color);
+    padding: 4px 8px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .button-group {
-    display:flex;
+    display: flex;
     justify-content: space-between;
 }
 
@@ -55,7 +52,7 @@
 }
 
 .card {
-    display:inline;
+    display: inline;
     justify-content: space-between;
     color: var(--primary-color);
     padding: 20px 20px;
@@ -84,7 +81,6 @@
     flex-direction: column;
 }
 
-
 .tags {
     display: flex;
     flex-direction: row;
@@ -100,31 +96,8 @@
     border-radius: 16px;
 }
 
-
-/*
-Flexbox on a lists removes the numbers. We use a counter here to add them back.
-https://stackoverflow.com/a/34316093
-https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Lists_and_Counters/Using_CSS_counters
-*/
-
 .hidden {
     display: none;
-}
-
-/* table styles */
-
-th, td {
-    padding: 15px;
-    text-align: left;
-}
-
-th {
-    border-bottom: 1px solid var(--primary-color);
-}
-
-a {
-    color: var(--tertiary-color);
-    text-decoration: none;
 }
 
 .quote, .author {
@@ -132,7 +105,7 @@ a {
     color: #543310;
     text-align: center;
     margin: 0 auto;
-    max-width: 600px; /* Adjust the max-width to control the width of the quote and author text */
+    max-width: 600px;
     padding: 0 20px;
 }
 
@@ -157,11 +130,36 @@ a {
 
 .search-bar {
     display: flex;
-    align-items:
-    margin-right: 20px; /* Added to push the search bar to the right */
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 #stockSearchInput {
     margin-right: 10px;
 }
 
+#manage-watchlist {
+    margin-top: 40px; /* Add margin to create space from search bar */
+}
+
+#watchlistInput, #stockSymbolsInput {
+    margin-right: 10px; /* Add space between the input fields */
+}
+
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto; /* Center the table */
+    text-align: center;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
