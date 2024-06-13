@@ -122,25 +122,39 @@ export default class StockWatchListClient extends BindingClass {
 
     }
 
-    async addStockIntoWatchlist(watchlistName, symbol,errorCallback) {
-     try {
-                    const token = await this.getTokenOrThrow("Only authenticated users can request watch list.");
-                    const response = await this.axiosClient.put(`/watchlists/{name}/{symbol}`, {
-                        watchlistName: watchlistName,
-                        symbol: symbol
-                    },{
+    async addStockIntoWatchlist(watchlistName, stockSymbol,errorCallback) {
+        try {
+             const token = await this.getTokenOrThrow("Only authenticated users can update watch list.");
+             const response = await this.axiosClient.put(`/watchlists/${watchlistName}/${stockSymbol}`, {
+                 watchlistName: watchlistName,
+                 stockSymbol: stockSymbol
+                 },{
                     headers: {
-                           Authorization: `Bearer ${token}`
-                    }
-                    });
-                    return response.data.watchList;
-                    } catch (error) {
-                         console.error('Error fetching stock information:', error.message);
-                    }
-
-
-
+                        Authorization: `Bearer ${token}`
+                 }
+                 });
+             return response.data.watchList;
+               } catch (error) {
+                     console.error('Error fetching stock information:', error.message);
+             }
     }
+
+     async deleteStockFromWatchlist(watchlistName, stockSymbol,errorCallback) {
+         try {
+                 const token = await this.getTokenOrThrow("Only authenticated users can update watch list.");
+                 const response = await this.axiosClient.delete(`/watchlists/${watchlistName}/${stockSymbol}`, {
+                     watchlistName: watchlistName,
+                     stockSymbol: stockSymbol
+                     },{
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                     }
+                     });
+                 return response.data.watchList;
+                   } catch (error) {
+                         console.error('Error fetching stock information:', error.message);
+                 }
+     }
 
 
 

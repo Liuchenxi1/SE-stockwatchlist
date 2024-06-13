@@ -8,7 +8,7 @@ class MainPage extends BindingClass {
         super();
         this.bindClassMethods(['mount','clientLoaded', 'createWatchlist',
         'clearWatchlist', 'deleteWatchlist','addWatchlistToPage',
-        'redirectToStockInfo','addStockIntoWatchlist'], this);
+        'redirectToStockInfo','addStockIntoWatchlist','deleteStockFromWatchlist'], this);
         this.dataStore = new DataStore();
         this.dataStore.addChangeListener(this.addWatchlistToPage);
 
@@ -20,7 +20,8 @@ class MainPage extends BindingClass {
         document.getElementById('clearButton').addEventListener('click', this.clearWatchlist);
         document.getElementById('deleteButton').addEventListener('click', this.deleteWatchlist);
         document.getElementById('searchButton').addEventListener('click', this.redirectToStockInfo);
-        document.getElementById('addStockIntoWatchListButton').addEventListener('click', this.addStockIntoWatchList);
+        document.getElementById('addStockIntoWatchListButton').addEventListener('click', this.addStockIntoWatchlist);
+        document.getElementById('deleteStockFromWatchListButton').addEventListener('click', this. deleteStockFromWatchlist);
 
         this.header.addHeaderToPage();
         this.client = new StockWatchListClient();
@@ -54,7 +55,6 @@ class MainPage extends BindingClass {
        const stockSymbolsArray =  stockSymbols.split(",");
 
        this.client.createWatchlist(watchlistName,stockSymbolsArray);
-       this.lastAddedWatchlistName = watchlistName;
 
        const tbody = document.getElementById("watchlistTbody");
        const tr = document.createElement("tr");
@@ -83,16 +83,6 @@ class MainPage extends BindingClass {
 
         this.client.deleteWatchlist(watchlistName);
 
-        const tbody = document.getElementById("watchlistTbody");
-        const rows = tbody.getElementsByTagName("tr");
-        for (let i = 0; i < rows.length; i++) {
-                const cells = rows[i].getElementsByTagName("td");
-                if (cells[0].textContent === watchlistName) {
-                tbody.removeChild(rows[i]);
-                break;
-                 }
-        }
-
         document.getElementById("watchlistInput").value ="";
     }
 
@@ -119,25 +109,46 @@ class MainPage extends BindingClass {
             window.location.href = `stockInfo.html?stockSymbol=${stockSymbol}`;
      }
 
-     addStockIntoWatchlist(evt) {
+     async addStockIntoWatchlist(evt) {
         evt.preventDefault();
 
         const watchlistName = document.getElementById("watchlistInput").value;
+        console.log('request received');
 
         if (watchlistName.trim() === "") {
             alert("Watchlist name cannot be empty");
             return;
+            }
 
-        const symbol = document.getElementById("stockSearchInput").value;
+        const stockSymbol = document.getElementById("stockSearchInput").value;
 
-        this.client.addStockInfoWatch(watchlistName,symbol);
+        await this.client.addStockIntoWatchlist(watchlistName,stockSymbol);
+
+        window.location.reload();
 
         document.getElementById("watchlistInput").value = "";
         document.getElementById("stockSearchInput").value = "";
 
-     }
     }
 
+    deleteStockFromWatchlist(evt) {
+            evt.preventDefault();
+
+            const watchlistName = document.getElementById("watchlistInput").value;
+
+            if (watchlistName.trim() === "") {
+                alert("Watchlist name cannot be empty");
+                return;
+                }
+
+            const stockSymbol = document.getElementById("stockSearchInput").value;
+
+            this.client.deleteStockFromWatchlist(watchlistName,stockSymbol);
+
+            document.getElementById("watchlistInput").value = "";
+            document.getElementById("stockSearchInput").value = "";
+
+        }
 
 }
 
