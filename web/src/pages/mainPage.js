@@ -6,7 +6,9 @@ import StockWatchListClient from '../api/stockWatchListClient';
 class MainPage extends BindingClass {
     constructor() {
         super();
-        this.bindClassMethods(['mount', 'createWatchlist', 'clearWatchlist', 'deleteWatchlist','addWatchlistToPage','redirectToStockInfo','clientLoaded','addWatchlistToPage'], this);
+        this.bindClassMethods(['mount','clientLoaded', 'createWatchlist',
+        'clearWatchlist', 'deleteWatchlist','addWatchlistToPage',
+        'redirectToStockInfo','addStockIntoWatchlist'], this);
         this.dataStore = new DataStore();
         this.dataStore.addChangeListener(this.addWatchlistToPage);
 
@@ -18,6 +20,7 @@ class MainPage extends BindingClass {
         document.getElementById('clearButton').addEventListener('click', this.clearWatchlist);
         document.getElementById('deleteButton').addEventListener('click', this.deleteWatchlist);
         document.getElementById('searchButton').addEventListener('click', this.redirectToStockInfo);
+        document.getElementById('addStockIntoWatchListButton').addEventListener('click', this.addStockIntoWatchList);
 
         this.header.addHeaderToPage();
         this.client = new StockWatchListClient();
@@ -115,6 +118,25 @@ class MainPage extends BindingClass {
 
             window.location.href = `stockInfo.html?stockSymbol=${stockSymbol}`;
      }
+
+     addStockIntoWatchlist(evt) {
+        evt.preventDefault();
+
+        const watchlistName = document.getElementById("watchlistInput").value;
+
+        if (watchlistName.trim() === "") {
+            alert("Watchlist name cannot be empty");
+            return;
+
+        const symbol = document.getElementById("stockSearchInput").value;
+
+        this.client.addStockInfoWatch(watchlistName,symbol);
+
+        document.getElementById("watchlistInput").value = "";
+        document.getElementById("stockSearchInput").value = "";
+
+     }
+    }
 
 
 }

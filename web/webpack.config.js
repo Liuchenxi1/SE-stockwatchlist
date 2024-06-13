@@ -23,10 +23,6 @@ module.exports = {
     usedExports: true
   },
   entry: {
-//    createPlaylist: path.resolve(__dirname, 'src', 'pages', 'createPlaylist.js'),
-//    viewPlaylist: path.resolve(__dirname, 'src', 'pages', 'viewPlaylist.js'),
-//    searchPlaylists: path.resolve(__dirname, 'src', 'pages', 'searchPlaylists.js'),
-//    hub: path.resolve(__dirname,'src','pages','hub.js')
     index: path.resolve(__dirname,'src','pages','index.js'),
     mainPage: path.resolve(__dirname,'src','pages','mainPage.js'),
     stockInfo: path.resolve(__dirname,'src','pages','stockInfo.js'),
