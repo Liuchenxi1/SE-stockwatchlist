@@ -139,17 +139,16 @@ export default class StockWatchListClient extends BindingClass {
              }
     }
 
-     async deleteStockFromWatchlist(watchlistName, stockSymbol,errorCallback) {
+     async deleteStockFromWatchlist(watchlistName, stockSymbol, errorCallback) {
          try {
                  const token = await this.getTokenOrThrow("Only authenticated users can update watch list.");
-                 const response = await this.axiosClient.delete(`/watchlists/${watchlistName}/${stockSymbol}`, {
-                     watchlistName: watchlistName,
-                     stockSymbol: stockSymbol
-                     },{
+                 const response = await this.axiosClient.delete(`/watchlists/${watchlistName}/${stockSymbol}`,{
                         headers: {
                             Authorization: `Bearer ${token}`
+                     },                 data:{ watchlistName: watchlistName,
+                                               stockSymbol: stockSymbol }
                      }
-                     });
+                     );
                  return response.data.watchList;
                    } catch (error) {
                          console.error('Error fetching stock information:', error.message);

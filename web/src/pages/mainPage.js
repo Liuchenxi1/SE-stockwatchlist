@@ -21,7 +21,7 @@ class MainPage extends BindingClass {
         document.getElementById('deleteButton').addEventListener('click', this.deleteWatchlist);
         document.getElementById('searchButton').addEventListener('click', this.redirectToStockInfo);
         document.getElementById('addStockIntoWatchListButton').addEventListener('click', this.addStockIntoWatchlist);
-        document.getElementById('deleteStockFromWatchListButton').addEventListener('click', this. deleteStockFromWatchlist);
+        document.getElementById('deleteStockFromWatchListButton').addEventListener('click', this.deleteStockFromWatchlist);
 
         this.header.addHeaderToPage();
         this.client = new StockWatchListClient();
@@ -35,7 +35,7 @@ class MainPage extends BindingClass {
 
     }
 
-    createWatchlist(evt) {
+    async createWatchlist(evt) {
         evt.preventDefault();
 
         const watchlistName = document.getElementById("watchlistInput").value;
@@ -71,7 +71,7 @@ class MainPage extends BindingClass {
         document.getElementById("stockSymbolsInput").value = "";
     }
 
-    deleteWatchlist(evt) {
+    async deleteWatchlist(evt) {
         evt.preventDefault();
 
         const watchlistName = document.getElementById("watchlistInput").value;
@@ -81,7 +81,9 @@ class MainPage extends BindingClass {
             return;
         }
 
-        this.client.deleteWatchlist(watchlistName);
+        await this.client.deleteWatchlist(watchlistName);
+
+        window.location.reload();
 
         document.getElementById("watchlistInput").value ="";
     }
@@ -131,10 +133,11 @@ class MainPage extends BindingClass {
 
     }
 
-    deleteStockFromWatchlist(evt) {
+    async deleteStockFromWatchlist(evt) {
             evt.preventDefault();
 
             const watchlistName = document.getElementById("watchlistInput").value;
+            console.log('request received');
 
             if (watchlistName.trim() === "") {
                 alert("Watchlist name cannot be empty");
@@ -143,7 +146,9 @@ class MainPage extends BindingClass {
 
             const stockSymbol = document.getElementById("stockSearchInput").value;
 
-            this.client.deleteStockFromWatchlist(watchlistName,stockSymbol);
+            await this.client.deleteStockFromWatchlist(watchlistName,stockSymbol);
+
+            window.location.reload();
 
             document.getElementById("watchlistInput").value = "";
             document.getElementById("stockSearchInput").value = "";
