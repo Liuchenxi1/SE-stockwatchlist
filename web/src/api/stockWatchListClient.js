@@ -66,7 +66,7 @@ export default class StockWatchListClient extends BindingClass {
 
     async createWatchlist(watchlistName, stockSymbols, errorCallback) {
         try {
-            const token = await this.getTokenOrThrow("Only authenticated users can create playlists.");
+            const token = await this.getTokenOrThrow("Only authenticated users can create watch list.");
             const response = await this.axiosClient.post(`watchlists`, {
                 watchlistName: watchlistName,
                 stockSymbols: stockSymbols
@@ -83,7 +83,7 @@ export default class StockWatchListClient extends BindingClass {
 
     async deleteWatchlist(watchlistName, errorCallback) {
         try {
-            const token = await this.getTokenOrThrow("Only authenticated users can delete watchlist.");
+            const token = await this.getTokenOrThrow("Only authenticated users can delete watch list.");
             const response = await this.axiosClient.delete(`watchlists`, {
                 data: { watchlistName: watchlistName },
                 headers: {
@@ -108,7 +108,7 @@ export default class StockWatchListClient extends BindingClass {
 
     async getWatchLists() {
          try {
-                const token = await this.getTokenOrThrow("Only authenticated users can request watchlists.");
+                const token = await this.getTokenOrThrow("Only authenticated users can request watch list.");
                 const response = await this.axiosClient.get(`/watchlists`, {
                 headers: {
                        Authorization: `Bearer ${token}`
@@ -121,6 +121,41 @@ export default class StockWatchListClient extends BindingClass {
                 }
 
     }
+
+    async addStockIntoWatchlist(watchlistName, stockSymbol,errorCallback) {
+        try {
+             const token = await this.getTokenOrThrow("Only authenticated users can update watch list.");
+             const response = await this.axiosClient.put(`/watchlists/${watchlistName}/${stockSymbol}`, {
+                 watchlistName: watchlistName,
+                 stockSymbol: stockSymbol
+                 },{
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                 }
+                 });
+             return response.data.watchList;
+               } catch (error) {
+                     console.error('Error fetching stock information:', error.message);
+             }
+    }
+
+     async deleteStockFromWatchlist(watchlistName, stockSymbol, errorCallback) {
+         try {
+                 const token = await this.getTokenOrThrow("Only authenticated users can update watch list.");
+                 const response = await this.axiosClient.delete(`/watchlists/${watchlistName}/${stockSymbol}`,{
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                     },                 data:{ watchlistName: watchlistName,
+                                               stockSymbol: stockSymbol }
+                     }
+                     );
+                 return response.data.watchList;
+                   } catch (error) {
+                         console.error('Error fetching stock information:', error.message);
+                 }
+     }
+
+
 
     handleError(error, errorCallback) {
         console.error(error);
