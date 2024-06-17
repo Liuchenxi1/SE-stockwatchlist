@@ -88,16 +88,25 @@ class MainPage extends BindingClass {
         document.getElementById("watchlistInput").value ="";
     }
 
-     addWatchlistToPage() {
+    addWatchlistToPage() {
         const watchlist = this.dataStore.get('watchlist');
         let stockSymbolsHtml = '';
-        for (const el of watchlist) {
-            stockSymbolsHtml += `
+
+        if (watchlist && watchlist.length > 0) {
+            for (const el of watchlist) {
+                stockSymbolsHtml += `
+                    <tr>
+                        <td>${el.watchlistName}</td>
+                        <td>${el.stockSymbols}</td>
+                    </tr>`;
+            }
+        } else {
+            stockSymbolsHtml = `
                 <tr>
-                    <td>${el.watchlistName}</td>
-                    <td>${el.stockSymbols}</td>
+                    <td colspan="2">No watchlists available.</td>
                 </tr>`;
         }
+
         document.getElementById('watchlistTbody').innerHTML = stockSymbolsHtml;
     }
 

@@ -37,6 +37,10 @@ public class GetWatchListsActivity {
 
         List<WatchList> watchLists = watchListDao.getWatchListsByEmail(email);
 
+        if(watchLists.isEmpty()) {
+            log.info("No watchlists found for email: {}", email);
+        }
+
         List<WatchListModel> watchListModels = new ModelConverter().toWatchlistModels(watchLists);
 
         return GetWatchListsResult.builder()
