@@ -1,4 +1,4 @@
-import MusicPlaylistClient from '../api/stockWatchListClient';
+import StockWatchListClient from '../api/stockWatchListClient';
 import BindingClass from "../util/bindingClass";
 
 /**
@@ -14,7 +14,7 @@ export default class Header extends BindingClass {
         ];
         this.bindClassMethods(methodsToBind, this);
 
-        this.client = new stockWatchListClient();
+        this.client = new StockWatchListClient();
     }
 
     /**
