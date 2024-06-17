@@ -9,7 +9,8 @@ export default class StockWatchListClient extends BindingClass {
 
         const methodsToBind = ['clientLoaded', 'getIdentity', 'login', 'logout',
         'createWatchlist','searchStockInfo','createWatchlist',
-        'deleteWatchlist','searchStockInfo','getWatchLists','addStockIntoWatchlist','deleteStockFromWatchlist'];
+        'deleteWatchlist','searchStockInfo',
+        'getWatchLists','addStockIntoWatchlist','deleteStockFromWatchlist'];
         this.bindClassMethods(methodsToBind, this);
 
         this.authenticator = new Authenticator();;
