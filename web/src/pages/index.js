@@ -16,12 +16,6 @@ class Index extends BindingClass {
         this.header.addHeaderToPage();
         }
 
-//    async directToMain() {
-//        if(this.header.isUserLogin() == true) {
-//            window.location.href = "/mainPage.html";
-//        }
-//    }
-
 }
 
 /**
@@ -30,8 +24,6 @@ class Index extends BindingClass {
 const main = async () => {
     const index = new Index();
     index.mount();
-//    console.log(index.header.isUserLogin());
-//    index.directToMain();
 };
 
 window.addEventListener('DOMContentLoaded', main);
