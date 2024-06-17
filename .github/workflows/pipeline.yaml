@@ -12,7 +12,7 @@ env:
   # STUDENTS: Set these environment variables 
   API_BASE_URL:  https://9i76ngkz14.execute-api.us-east-2.amazonaws.com/Prod/
   COGNITO_DOMAIN:  stockwatchlist-liu-chenxi
-  COGNITO_REDIRECT_SIGNIN: https://d12grqcmwrv82d.cloudfront.net/
+  COGNITO_REDIRECT_SIGNIN: https://d12grqcmwrv82d.cloudfront.net/mainPage.html
   COGNITO_REDIRECT_SIGNOUT: https://d12grqcmwrv82d.cloudfront.net/
 
   COGNITO_USER_POOL_ID: ${{ secrets.COGNITO_USER_POOL_ID }}

@@ -81,7 +81,7 @@ Resources:
         - http://localhost:8000/mainPage.html
         - !If
             - DeployCloudFront
-            - !Sub "https://${CloudfrontDistribution.DomainName}"
+            - !Sub "https://${CloudfrontDistribution.DomainName}/mainPage.html"
             - !Ref "AWS::NoValue"
       LogoutURLs:
         - http://localhost:8000
