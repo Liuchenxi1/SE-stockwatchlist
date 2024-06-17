@@ -1,4 +1,4 @@
-import MusicPlaylistClient from '../api/musicPlaylistClient';
+import MusicPlaylistClient from '../api/stockWatchListClient';
 import BindingClass from "../util/bindingClass";
 
 /**
