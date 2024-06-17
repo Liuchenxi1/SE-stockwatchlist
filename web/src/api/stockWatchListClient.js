@@ -101,6 +101,7 @@ export default class StockWatchListClient extends BindingClass {
 
     async searchStockInfo(stockSymbol, errorCallback) {
         try {
+               const token = await this.getTokenOrThrow("Only authenticated users can request watch list.");
              const response = await this.axiosClient.get(`/stock/${stockSymbol}`);
              return response.data.stockInfoList;
         } catch (error) {
