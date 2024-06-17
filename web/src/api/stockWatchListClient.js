@@ -101,8 +101,12 @@ export default class StockWatchListClient extends BindingClass {
 
     async searchStockInfo(stockSymbol, errorCallback) {
         try {
-               const token = await this.getTokenOrThrow("Only authenticated users can request watch list.");
-             const response = await this.axiosClient.get(`/stock/${stockSymbol}`);
+             const token = await this.getTokenOrThrow("Only authenticated users can request watch list.");
+             const response = await this.axiosClient.get(`/stock/${stockSymbol',
+                headers: {
+                     Authorization: `Bearer ${token}`
+                }
+             });
              return response.data.stockInfoList;
         } catch (error) {
              console.error('Error fetching stock information:', error.message);
@@ -116,7 +120,7 @@ export default class StockWatchListClient extends BindingClass {
                 const response = await this.axiosClient.get(`/watchlists`, {
                 headers: {
                        Authorization: `Bearer ${token}`
-                }
+                    }
                 });
                 return response.data.watchLists;
                 } catch (error) {
