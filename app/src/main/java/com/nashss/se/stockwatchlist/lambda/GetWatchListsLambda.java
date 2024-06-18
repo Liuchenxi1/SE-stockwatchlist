@@ -15,10 +15,6 @@ public class GetWatchListsLambda extends LambdaActivityRunner<GetWatchListsReque
     @Override
     public LambdaResponse handleRequest(AuthenticatedLambdaRequest<GetWatchListsRequest> input, Context context) {
         return super.runActivity(() -> {
-//            GetWatchListsRequest authenticatedRequest = input.fromBody(GetWatchListsRequest.class);
-
-//            log.info("getting watchlist: {}", authenticatedRequest.getEmail());
-
             return input.fromUserClaims(claims ->
                     GetWatchListsRequest.builder()
                             .withEmail(claims.get("email"))
