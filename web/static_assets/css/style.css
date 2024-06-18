@@ -143,7 +143,8 @@
 }
 
 #watchlistInput, #stockSymbolsInput {
-    margin-right: 10px; /* Add space between the input fields */
+    margin-right: 5px;
+     width: 300px;/* Add space between the input fields */
 }
 
 table {
