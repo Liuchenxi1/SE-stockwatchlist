@@ -11,7 +11,9 @@ import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -36,11 +38,11 @@ public class GetWatchListsActivity {
         }
         log.info("Fetching watch lists for email: {}", email);
 
-        List<WatchList> watchLists = watchListDao.getWatchListsByEmail(email);
+        List<WatchList> watchLists = Optional.ofNullable(watchListDao.getWatchListsByEmail(email))
+                .orElseGet(Collections::emptyList);
 
         if(watchLists.isEmpty()) {
             log.info("No watchlists found for email: {}", email);
-            watchLists = new ArrayList<>();
         }
 
         List<WatchListModel> watchListModels = new ModelConverter().toWatchlistModels(watchLists);
