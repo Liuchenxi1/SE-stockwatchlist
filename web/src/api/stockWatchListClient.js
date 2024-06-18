@@ -124,7 +124,7 @@ export default class StockWatchListClient extends BindingClass {
                 });
                 return response.data.watchLists;
                 } catch (error) {
-                     console.error('Error fetching stock information:', error.message);
+                     console.error('Error fetching watchlist:', error.message);
                      return [];
                 }
 

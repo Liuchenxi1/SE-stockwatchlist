@@ -38,12 +38,10 @@ public class GetWatchListsActivity {
         }
         log.info("Fetching watch lists for email: {}", email);
 
-        List<WatchList> watchLists = null;
+        List<WatchList> watchLists = watchListDao.getWatchListsByEmail(email);
 
-        if (watchLists.isEmpty()) {
+        if (watchLists == null || watchLists.isEmpty()) {
             watchLists = new ArrayList<>();
-        } else {
-            watchLists = watchListDao.getWatchListsByEmail(email);
         }
 
         List<WatchListModel> watchListModels = new ModelConverter().toWatchlistModels(watchLists);
