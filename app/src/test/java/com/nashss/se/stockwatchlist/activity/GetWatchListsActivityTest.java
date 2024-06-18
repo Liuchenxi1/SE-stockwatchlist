@@ -4,11 +4,9 @@ import com.nashss.se.stockwatchlist.activity.requests.GetWatchListsRequest;
 import com.nashss.se.stockwatchlist.activity.results.GetWatchListsResult;
 import com.nashss.se.stockwatchlist.dynamodb.WatchListDao;
 import com.nashss.se.stockwatchlist.dynamodb.models.WatchList;
-import com.nashss.se.stockwatchlist.execptions.WatchlistIsNotFoundException;
 import com.nashss.se.stockwatchlist.models.WatchListModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.BDDMockito;
 import org.mockito.Mock;
 
 import java.util.ArrayList;

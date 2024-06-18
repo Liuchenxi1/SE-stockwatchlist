@@ -57,7 +57,4 @@ public class WatchListDao {
         return watchList;
     }
 
-
-    //TODO need more functions
-
 }
