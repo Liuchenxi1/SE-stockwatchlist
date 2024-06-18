@@ -65,7 +65,7 @@ class CreateWatchListActivityTest {
     }
 
     @Test
-    public void handleRequest_NoEamil_createsWatchList() {
+    public void handleRequest_EmailIsNull_createsWatchList() {
         // GIVEN
 
         CreateWatchListRequest request = CreateWatchListRequest.builder()
