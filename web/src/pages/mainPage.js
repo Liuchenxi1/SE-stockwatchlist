@@ -54,7 +54,8 @@ class MainPage extends BindingClass {
 
        const stockSymbolsArray =  stockSymbols.split(",");
 
-       this.client.createWatchlist(watchlistName,stockSymbolsArray);
+       await this.client.createWatchlist(watchlistName,stockSymbolsArray);
+       window.location.reload();
 
        const tbody = document.getElementById("watchlistTbody");
        const tr = document.createElement("tr");
@@ -63,6 +64,8 @@ class MainPage extends BindingClass {
 
         document.getElementById("watchlistInput").value = "";
         document.getElementById("stockSymbolsInput").value = "";
+
+
     }
 
     clearWatchlist(evt) {
@@ -88,7 +91,7 @@ class MainPage extends BindingClass {
         document.getElementById("watchlistInput").value ="";
     }
 
-    addWatchlistToPage() {
+    async addWatchlistToPage() {
         const watchlist = this.dataStore.get('watchlist');
         let stockSymbolsHtml = '';
 
@@ -100,10 +103,11 @@ class MainPage extends BindingClass {
                         <td>${el.stockSymbols}</td>
                     </tr>`;
             }
+
         } else {
             stockSymbolsHtml = `
                 <tr>
-                    <td colspan="2">No watchlists available.</td>
+                    <td colspan="2">No watchlist available. Please create one</td>
                 </tr>`;
         }
 
