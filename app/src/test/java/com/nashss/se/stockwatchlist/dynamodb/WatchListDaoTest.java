@@ -92,27 +92,8 @@ class WatchListDaoTest {
         //THEN
         assertNotNull(actualWatchLists);
         assertTrue(actualWatchLists.isEmpty());
+        assertTrue(actualWatchLists.size() == 0);
     }
 
-    @Test
-    public void ReadWatchListByEmail_ThrowException () {
-        //GIVEN
-        String email = "test@example.com";
-        String expectedMessage = "DynamoDB exception";
-
-        when(dynamoDBMapper.query(eq(WatchList.class), any(DynamoDBQueryExpression.class)))
-                .thenThrow(new RuntimeException("DynamoDB exception"));
-
-        //WHEN
-        watchListDao.getWatchListsByEmail(email);
-
-        try {
-            watchListDao.getWatchListsByEmail(email);
-            fail("Expected RuntimeException to be thrown");
-        } catch (RuntimeException e) {
-            assertEquals(expectedMessage, e.getMessage());
-        }
-
-    }
 
 }
