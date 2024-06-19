@@ -31,6 +31,4 @@ class SearchStockInfoActivityTest {
         assertTrue(firstStockInfo.getHigh() >= 0.00);
         assertTrue(firstStockInfo.getVolume() >= 0);
     }
-
-
 }
