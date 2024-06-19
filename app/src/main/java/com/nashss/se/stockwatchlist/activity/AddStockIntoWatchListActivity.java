@@ -52,7 +52,5 @@ public class AddStockIntoWatchListActivity {
         return AddStockIntoWatchListResult.builder()
                 .withWatchListModel(watchListModel)
                 .build();
-
     }
-
 }

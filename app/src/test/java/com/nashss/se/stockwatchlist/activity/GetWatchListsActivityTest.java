@@ -74,7 +74,6 @@ class GetWatchListsActivityTest {
         List<WatchList> watchLists = new ArrayList<>();
         watchLists.add(watchList);
 
-        // Mocking the DAO to return a non-empty list
         when(watchListDao.getWatchListsByEmail(email)).thenReturn(watchLists);
 
         // WHEN
