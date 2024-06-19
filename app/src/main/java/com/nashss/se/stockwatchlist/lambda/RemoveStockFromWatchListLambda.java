@@ -17,13 +17,13 @@ public class RemoveStockFromWatchListLambda
     @Override
     public LambdaResponse handleRequest (AuthenticatedLambdaRequest<RemoveStockFromWatchListRequest> input, Context context) {
         return super.runActivity(() -> {
-            RemoveStockFromWatchListRequest unauthenticatedRequest = input.fromBody(RemoveStockFromWatchListRequest.class);
-            log.info("the stock symbol is {}", unauthenticatedRequest.getStockSymbol());
+            RemoveStockFromWatchListRequest authenticatedRequest = input.fromBody(RemoveStockFromWatchListRequest.class);
+            log.info("the stock symbol is {}", authenticatedRequest.getStockSymbol());
             return input.fromUserClaims(claims ->
                     RemoveStockFromWatchListRequest.builder()
                             .withEmail(claims.get("email"))
-                            .withWatchlistName(unauthenticatedRequest.getWatchlistName())
-                            .withStockSymbol(unauthenticatedRequest.getStockSymbol())
+                            .withWatchlistName(authenticatedRequest.getWatchlistName())
+                            .withStockSymbol(authenticatedRequest.getStockSymbol())
                             .build());
         }, (request, serviceComponent) ->
                 serviceComponent.provideRemoveStockFromWatchListActivity().handleRequest(request));

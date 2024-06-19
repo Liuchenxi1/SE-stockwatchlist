@@ -15,13 +15,13 @@ public class AddStockIntoWatchListLambda
        @Override
        public LambdaResponse handleRequest (AuthenticatedLambdaRequest<AddStockIntoWatchListRequest> input, Context context) {
            return super.runActivity(() -> {
-               AddStockIntoWatchListRequest unauthenticatedRequest = input.fromBody(AddStockIntoWatchListRequest.class);
-               log.info("the stock symbol is {}", unauthenticatedRequest.getStockSymbol());
+               AddStockIntoWatchListRequest authenticatedRequest = input.fromBody(AddStockIntoWatchListRequest.class);
+               log.info("the stock symbol is {}", authenticatedRequest.getStockSymbol());
                return input.fromUserClaims(claims ->
                        AddStockIntoWatchListRequest.builder()
                                .withEmail(claims.get("email"))
-                               .withWatchlistName(unauthenticatedRequest.getWatchlistName())
-                               .withStockSymbol(unauthenticatedRequest.getStockSymbol())
+                               .withWatchlistName(authenticatedRequest.getWatchlistName())
+                               .withStockSymbol(authenticatedRequest.getStockSymbol())
                                .build());
            }, (request, serviceComponent) ->
                    serviceComponent.provideAddStockIntoWatchListActivity().handleRequest(request));

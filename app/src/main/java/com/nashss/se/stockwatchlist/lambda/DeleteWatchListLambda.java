@@ -16,14 +16,14 @@ public class DeleteWatchListLambda
     @Override
     public LambdaResponse handleRequest(AuthenticatedLambdaRequest<DeleteWatchListRequest> input, Context context) {
         return super.runActivity(() -> {
-                    DeleteWatchListRequest unauthenticatedRequest = input.fromBody(DeleteWatchListRequest.class);
+                    DeleteWatchListRequest authenticatedRequest = input.fromBody(DeleteWatchListRequest.class);
 
-                    log.info("Deleting watchlist: {}", unauthenticatedRequest.getWatchlistName());
+                    log.info("Deleting watchlist: {}", authenticatedRequest.getWatchlistName());
 
                     return input.fromUserClaims(claims ->
                             DeleteWatchListRequest.builder()
                                     .withEmail(claims.get("email"))
-                                    .withWatchlistName(unauthenticatedRequest.getWatchlistName())
+                                    .withWatchlistName(authenticatedRequest.getWatchlistName())
                                     .build());
                 },
                 (request, serviceComponent) ->

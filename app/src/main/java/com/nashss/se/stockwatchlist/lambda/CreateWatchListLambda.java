@@ -17,13 +17,13 @@ public class CreateWatchListLambda
     @Override
     public LambdaResponse handleRequest (AuthenticatedLambdaRequest<CreateWatchListRequest> input, Context context) {
         return super.runActivity(() -> {
-            CreateWatchListRequest unauthenticatedRequest = input.fromBody(CreateWatchListRequest.class);
-            log.info("the stock symbols are{}" ,unauthenticatedRequest.getStockSymbols());
+            CreateWatchListRequest authenticatedRequest = input.fromBody(CreateWatchListRequest.class);
+            log.info("the stock symbols are{}" ,authenticatedRequest.getStockSymbols());
             return input.fromUserClaims(claims ->
                     CreateWatchListRequest.builder()
                             .withEmail(claims.get("email"))
-                            .withWatchlistName(unauthenticatedRequest.getWatchlistName())
-                            .withStockSymbols(unauthenticatedRequest.getStockSymbols())
+                            .withWatchlistName(authenticatedRequest.getWatchlistName())
+                            .withStockSymbols(authenticatedRequest.getStockSymbols())
                             .build());
         },
                 (request, serviceComponent) ->

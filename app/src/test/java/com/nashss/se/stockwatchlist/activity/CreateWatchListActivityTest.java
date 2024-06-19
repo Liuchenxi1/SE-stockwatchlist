@@ -62,6 +62,7 @@ class CreateWatchListActivityTest {
         assertEquals(email, result.getWatchList().getEmail());
         assertEquals(watchListName, result.getWatchList().getWatchlistName());
         assertEquals(stocks, result.getWatchList().getStockSymbols());
+
     }
 
     @Test
@@ -77,7 +78,5 @@ class CreateWatchListActivityTest {
             createWatchListActivity.handleRequest(request);
         });
     }
-
-
 
 }
