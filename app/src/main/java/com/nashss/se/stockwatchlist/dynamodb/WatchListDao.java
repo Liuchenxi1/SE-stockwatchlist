@@ -9,6 +9,7 @@ import com.nashss.se.stockwatchlist.execptions.WatchlistIsNotFoundException;
 import com.nashss.se.stockwatchlist.metrics.MetricsPublisher;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +38,7 @@ public class WatchListDao {
         List<WatchList> queryList = dynamoDBMapper.query(WatchList.class, queryExpression);
 
         if (queryList == null || queryList.isEmpty()) {
-            throw new WatchlistIsNotFoundException("watch list not found for requested email");
+            queryList = new ArrayList<>();
         }
 
         return queryList;

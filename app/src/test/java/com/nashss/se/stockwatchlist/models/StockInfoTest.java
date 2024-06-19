@@ -35,7 +35,7 @@ public class StockInfoTest {
     }
 
     @Test
-    public void testStockInfoToString() {
+    public void testStockInfoRead() {
         // GIVEN
         String timestamp = "2023-06-17T10:00:00Z";
         double open = 100.5;
