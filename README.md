@@ -43,6 +43,6 @@ Integer // volume
 
 7.As a user, I am able to remove a watchlist that if I didn’t need it anymore
 
-8.As a user, I want to see analysis for this stock based on the data (Stretch goal)
+8.As a user, I want to see analysis for this stock based on the data (future feature)
 
 
