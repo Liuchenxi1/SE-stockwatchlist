@@ -30,12 +30,19 @@ Integer // volume
 
 ## User cases
 1.As a user, I want to login in my watchlists
+
 2.As a user, I want to check individual stock information
+
 3.As a user, I want to create stock watchlist
+
 4.As a user, I want to add individual stock to the watchlist
+
 5.As a user, I am able to remove individual stock from watchlist when I want to 
+
 6.As a user, I am able to create multiple watchlists with different names
+
 7.As a user, I am able to remove a watchlist that if I didn’t need it anymore
+
 8.As a user, I want to see analysis for this stock based on the data (Stretch goal)
 
 
