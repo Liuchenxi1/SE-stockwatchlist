@@ -12,26 +12,26 @@ Having utilized various free analysis tools like Yahoo Finance and Robinhood, I'
 ### Data Modeling
 WatchlistModel (DynamoDB)
 
-String // userEmail
+- String // userEmail
 
-String // Watchlist Name
+- String // Watchlist Name
 
-List<String> // StockSymbols  
+- List<String> // StockSymbols  
 
 ### Stock Model (Yahoo Finance API)
 API provides the following key stock metrics:
 
-String // Stock Name;
+- String // Stock Name;
 
-Double // 52wk high;
+- Double // 52wk high;
 
-Double // 52wk low;
+- Double // 52wk low;
 
-Double // Today open price;
+- Double // Today open price;
 
-Double // Today close price;
+- Double // Today close price;
 
-Integer // volume
+- Integer // volume
 
 ## User cases
 1.As a user, I want to login in my watchlists
