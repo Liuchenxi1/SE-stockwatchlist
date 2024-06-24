@@ -3,10 +3,12 @@
 Having utilized various free analysis tools like Yahoo Finance and Robinhood, I've observed a common deficiency: they are not beginner-friendly. Rather than simplifying the process, these platforms either tend to be complex and demand significant professional knowledge or provide simple data. In my experience, these free available tools can overwhelm newcomers, leading to potential financial losses. I've personally faced such challenges and learned hard lessons. My aim is to bridge this gap and equip new investors with the insights and tools they need to navigate the financial world confidently. How can I reduce these confusions and provide valuable insights to encourage broader participation in finance? This project is founded upon the premise of enabling beginners to make informed investment decisions. Upon completion, the application will empower users to select stocks and comprehend the associated risk factors, including the potential for price depreciation or appreciation.
 
 ## Technologies
-Frontend
+Frontend: 
+
 JavaScript, HTML, CSS, Webpack, AXIOS
 
-Backend
+Backend:
+
 Java, AWS Lambda, DynamoDB
 
 Yahoo Finance API
