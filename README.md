@@ -48,3 +48,7 @@ API provides the following key stock metrics:
 
 7. As a user, I am able to remove a watchlist that if I didn’t need it anymore
 
+## Video Demo
+
+[![Watch the video](https://img.youtube.com/vi/UWto2Zpus1w/hqdefault.jpg)](https://youtu.be/UWto2Zpus1w)
+
